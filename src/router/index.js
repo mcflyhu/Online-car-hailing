@@ -403,7 +403,19 @@ export const asyncRoutes = [
       {
         path: 'index',
         component: () => import('@/views/order/order-description'),
-        name: 'order'
+        name: '订单详情'
+      }
+    ]
+  },
+  {
+    path: '/comment',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/comment/index'),
+        name: '评论',
+        meta: { title: 'Comment', icon: 'el-icon-s-comment' }
       }
     ]
   },
