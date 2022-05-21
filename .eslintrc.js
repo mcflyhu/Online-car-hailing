@@ -193,6 +193,7 @@ module.exports = {
     'object-curly-spacing': [2, 'always', {
       objectsInObjects: false
     }],
+    "indent": ["off", 2],
     'array-bracket-spacing': [2, 'never']
   }
 }
