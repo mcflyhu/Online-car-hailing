@@ -1,5 +1,6 @@
 @import "./sassConfig.scss";
 @import "./normalize.scss";
+@import "./ui.scss";
 
 i[class^=icon]{//获取类名开头为icon的标签
     display: inline-block;//同时拥有块元素和显示元素
@@ -9,6 +10,23 @@ i[class^=icon]{//获取类名开头为icon的标签
     background-color:$color-main;
     background-repeat: no-repeat;
 }
+.pull-left{
+    float: left;
+}
+.order-btn {
+    display: block;
+    widows: 120px;
+    height: 42px;
+    border-radius: 10px;
+    margin-block: 0 2px;
+    line-height: 42px;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(48, 97, 162);
+    font-size: 26px;
+    font-weight: 300;
+}
+
 .icon-help{background-image: url(~@/assets/img/icon/help.png);}
 .icon-set{background-image: url(~@/assets/img/icon/set.png);}
 .icon-safe{background-image: url(~@/assets/img/icon/safe.png);}

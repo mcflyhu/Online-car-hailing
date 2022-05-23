@@ -89,6 +89,11 @@ export const constantRoutes = [
     component: () => import("../views/getOrders/index")
   },
   {
+    path: '/driver-order',
+    component: () => import('@/views/driver/driver-Orders'),
+    hidden: true
+  },
+  {
     path: "/dashboard",
     component: Layout,
     children: [

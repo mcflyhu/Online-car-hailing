@@ -7,7 +7,7 @@
         </ul>
         <ul class="btn-class">
             <li>
-                <a href="http://localhost:9527/#/getOrder" class="appoint-btn">点击约车</a>
+                <a href="http://localhost:9527/#/getOrder" class="order-btn">点击约车</a>
                 <a href="javascrit:void();" class="order-btn">点击叫车</a>
             </li>
         </ul>

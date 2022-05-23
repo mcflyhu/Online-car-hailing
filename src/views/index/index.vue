@@ -2,8 +2,6 @@ import VueAMap from '@vuemap/vue-amap'
 <template>
 
   <div class="index">
-    <!--司机-->
-    <Drivers />
     <!--下单-->
     <Orders />
     <!--地图-->

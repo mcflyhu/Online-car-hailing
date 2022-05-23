@@ -1,11 +1,12 @@
 import VueAMap from '@vuemap/vue-amap'
 <template>
     <div class="index-wrap">
-       <span @click="user"> 司机信息</span>
+       
     </div>
 </template>
 
 <script>
+
 export default {
   name: "Drivers",
     data() {
