@@ -43,8 +43,11 @@ module.exports = {
     // it can be accessed in index.html to inject the correct title.
     name: name,
     resolve: {
+      extensions: ['.js', '.json', '.vue'],  // 自动添加文件名后缀
       alias: {
-        '@': resolve('src')
+        '@': resolve('src'),
+        '@e': path.resolve(__dirname, './src'),
+        '@c': path.resolve(__dirname, './src/components')
       }
     }
   },

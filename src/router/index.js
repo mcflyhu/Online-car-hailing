@@ -11,6 +11,7 @@ import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
+import Home from "../views/index/index.vue";
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -71,9 +72,30 @@ export const constantRoutes = [
     hidden: true
   },
   {
-    path: '/',
+    path: "/",
+    name: "Index",
+    component: Home,
+    children: [
+      {
+        path: "/user",
+        name: "Users",
+        component: () => import("../views/users/index")
+      }
+    ]
+  },
+  {
+    path: "/getOrder",
+    name: "getOrder",
+    component: () => import("../views/getOrders/index")
+  },
+  {
+    path: '/driver-order',
+    component: () => import('@/views/driver/driver-Orders'),
+    hidden: true
+  },
+  {
+    path: "/dashboard",
     component: Layout,
-    redirect: '/dashboard',
     children: [
       {
         path: 'dashboard',
@@ -83,6 +105,20 @@ export const constantRoutes = [
       }
     ]
   },
+  // {
+  //   path: '/',
+  //   component: Layout,
+  //   redirect: '/dashboard',
+  //   children: [
+  //     {
+  //       path: 'dashboard',
+  //       component: () => import('@/views/dashboard/index'),
+  //       name: 'Dashboard',
+  //       meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+  //     }
+  //   ]
+  // },
+
   {
     path: '/documentation',
     component: Layout,

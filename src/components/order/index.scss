@@ -1,0 +1,46 @@
+@import  "../../styles/main.scss";
+.Orders {
+    ul {
+        display: inline-block;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    .help-set-safe {
+        position: fixed;
+        left: 360px;
+        right: 0;
+        bottom: 86px;
+        z-index: 10;
+        text-align: center;
+    }
+
+    .btn-class {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 65px;
+        z-index: 10;
+        text-align: center;
+    }
+
+    .locate {
+        position: fixed;
+        left: 0;
+        right: 360px;
+        bottom: 86px;
+        z-index: 10;
+        text-align: center;
+    }
+
+    .icon {
+        margin: 0 17px;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+}
+
+
+
