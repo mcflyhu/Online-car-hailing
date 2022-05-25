@@ -419,6 +419,29 @@ export const asyncRoutes = [
       }
     ]
   },
+  {
+    path: '/comment-description',
+    component: Layout,
+    redirect: '/comment-description/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/comment/comment-description'),
+        name: '评论详情'
+      }
+    ]
+  },
+  {
+    path: '/components',
+    component: Layout,
+    children: [
+      {
+        path: 'CommentDialog',
+        component: () => import('@/views/comment/components/CommentDialog'),
+        meta: { tile: '对话框' }
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
