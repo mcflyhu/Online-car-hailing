@@ -38,7 +38,7 @@
                 <a href="javascript:void(0);" class="take_orders">点击接单</a>
             </footer>
         </section>
-        <section class="sec-order orders-detail" :style="'height:' + height">
+        <section class="sec-order orders-detail" :style="'height:' + height" v-if="cars_info_show">
             <h4 class="column">
                 <img src="./components/agora_快速发版-快速上线.svg">
                 <p class="name">迅捷网约车</p>

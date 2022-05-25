@@ -20,51 +20,70 @@ import VueAMap from '@vuemap/vue-amap'
 
 <script>
 import { AMapManager, lazyAMapApiLoaderInstance } from "vue-amap"
-//import location from "../../plugin/aMap.js"
+import {getLonLan} from "./common"
+import { SelfLocation } from "./location"
 let amapManager = new AMapManager();
 export default {
     name: "Map_index",
     data() {
+        const _this = this;
         return {
             map: null,
-            //zoom: 12,
-            //center: [121.329402, 31.228667],
             amapManager,
-            // events: {
-            //   init(o) {
-            //     //this.getLocation();
-            //     AMapUI.loadUI(['overlay/SimpleMarker'], function (SimpleMarker) {
-            //       const marker = new SimpleMarker({
-            //         iconLabel: {
-            //           innerHTML: '<i>1</i>', //设置文字内容
-            //           style: {
-            //             color: '#fff' //设置文字颜色
-            //           }
-            //         },
-            //         iconStyle: 'red',
-            //         map: o,
-            //         position: o.getCenter()
-
-            //       })
-            //       //marker.setMap(o);
-
-            //     })
-
-            //   }
-
-            // },
-            // radius: 100,
-            // currentCircle: null
+            center: [114.246754, 22.721943],
+            zoom: 18,
+            self_lng: "",
+            self_lat: "",
+            events: {
+                init(o) {
+                    lazyAMapApiLoaderInstance.load().then(() => {
+                        _this.initMap();
+                    });
+                }
+            },
+            // 自身定位
+            circle: [],
         }
     },
-    mounted() {
-        lazyAMapApiLoaderInstance.load().then(() => {
-            this.map = new AMap.Map('amapDemo', {
-                center: new AMap.LngLat(121.59996, 31.197646),
-                zoom: 11,
+    methods: {
+        /*初始化地图 */
+        initMap() {
+            this.map = amapManager.getMap();
+            // 地图初始化完成回调
+            this.$emit("callbackComponent", {
+                function: "loadMap"
             })
-        });
-    },
+            // 自身定位
+            this.selfLocation();
+            //getLonLan();
+        },
+        /** 存储数据 */
+        saveData(params) {
+            if (this[params.key]) {
+                this[params.key] = params.value;
+            }
+        },
+        selfLocation() {
+            SelfLocation({
+                map: this.map,
+                complete: (val) => this.selfLocationComplete(val)
+            })
+        },
+        /** 自身定位 成功回调 */
+        selfLocationComplete(data) {
+            //console.log(333)
+            this.self_lng = data.position.lng;
+            this.self_lat = data.position.lat;
+            const json = {
+                radius: 4,
+                color: "#393e43",
+                strokeOpacity: "0.2",
+                strokeWeight: "30"
+            }
+            json.center = [this.self_lng, this.self_lat];
+            this.circle.push(json)
+        },
+    }
     // methods: {
     //   getLocation() {
     //     let _that = this
