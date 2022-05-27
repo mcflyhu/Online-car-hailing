@@ -11,7 +11,6 @@ import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
-import Home from "../views/index/index.vue";
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -72,30 +71,9 @@ export const constantRoutes = [
     hidden: true
   },
   {
-    path: "/",
-    name: "Index",
-    component: Home,
-    children: [
-      {
-        path: "/user",
-        name: "Users",
-        component: () => import("../views/users/index")
-      }
-    ]
-  },
-  {
-    path: "/getOrder",
-    name: "getOrder",
-    component: () => import("../views/getOrders/index")
-  },
-  {
-    path: '/driver-order',
-    component: () => import('@/views/driver/driver-Orders'),
-    hidden: true
-  },
-  {
-    path: "/dashboard",
+    path: '/',
     component: Layout,
+    redirect: '/dashboard',
     children: [
       {
         path: 'dashboard',
@@ -105,20 +83,6 @@ export const constantRoutes = [
       }
     ]
   },
-  // {
-  //   path: '/',
-  //   component: Layout,
-  //   redirect: '/dashboard',
-  //   children: [
-  //     {
-  //       path: 'dashboard',
-  //       component: () => import('@/views/dashboard/index'),
-  //       name: 'Dashboard',
-  //       meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
-  //     }
-  //   ]
-  // },
-
   {
     path: '/documentation',
     component: Layout,
@@ -467,6 +431,7 @@ export const asyncRoutes = [
       }
     ]
   },
+  /*
   {
     path: '/components',
     component: Layout,
@@ -478,6 +443,7 @@ export const asyncRoutes = [
       }
     ]
   },
+  */
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

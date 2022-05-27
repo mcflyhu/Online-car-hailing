@@ -52,7 +52,7 @@ export default {
       colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
       texts: ['极度不满意', '失望', '一般', '满意', '非常满意'],
       comment: '',
-      dialogVisible: false,
+      dialogVisible: true,
       CommentForm: {
 
       }

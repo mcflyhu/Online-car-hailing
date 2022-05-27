@@ -55,8 +55,8 @@ export default {
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    if (this.ruleForm.origin == '') {
-                        this.ruleForm.origin = this.orOrigin;
+                    if (this.ruleForm.origin === '') {
+                        this.ruleForm.origin = this.orOrigin
                     }
                     this.$alert('正在等待接单...', '等候接单', {
                         confirmButtonText: '取消订单',
