@@ -1,6 +1,6 @@
 import VueAMap from '@vuemap/vue-amap'
 <template>
-    <div class="A-Map" ref="map"  @callbackComponent="callbackComponent" >
+    <div class="A-Map" ref="map" @callbackComponent="callbackComponent">
         <Map_index />
         <div id="Order-List">
             <ul class="get-orders-ui">
@@ -11,8 +11,9 @@ import VueAMap from '@vuemap/vue-amap'
                     <el-form-item label="目的地" prop="destination">
                         <el-input v-model="ruleForm.destination" placeholder="请输入目的地"></el-input>
                     </el-form-item>
-                    <el-form-item>
-                        <el-button type="primary" @click="submitForm('ruleForm')" class="pushOrder">立即创建</el-button>
+                    <el-form-item class="pushOrder">
+                        <el-button @click="pushback">返回</el-button>
+                        <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
                     </el-form-item>
                 </el-form>
             </ul>
@@ -88,6 +89,11 @@ export default {
         },
         resetForm(formName) {
             this.$refs[formName].resetFields();
+        },
+        pushback() {
+            this.$router.replace({
+                name: "Index"
+            })
         }
     },
 }

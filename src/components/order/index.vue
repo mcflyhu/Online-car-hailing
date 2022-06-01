@@ -1,32 +1,91 @@
 <template>
     <div class="Orders">
-        <ul class="help-set-safe">
-            <li><i class="icon icon-help"></i></li>
-            <li><i class="icon icon-set"></i></li>
-            <li><i class="icon icon-safe"></i></li>
-        </ul>
-        <ul class="btn-class">
-            <li>
-                <a href="http://localhost:9527/#/getOrder" class="order-btn">点击约车</a>
-                <a href="javascrit:void();" class="order-btn">点击叫车</a>
-            </li>
-        </ul>
-        <ul class="locate">
-            <li><i class="icon icon-locate"></i></li>
-            <li><i class="icon icon-user"  @click="jump"></i></li>
-            <li><i class="icon icon-cancel"></i></li>
-        </ul>
+        <getOrderItems :vshow="show_details"/>
+        <div class="bar" v-if="show_bar">
+            <ul class="help-set-safe">
+                <li><a href="javascrit:void();" @click="selfLocation">
+                        <img src="./components/定位-定位.svg" />
+                    </a></li>
+                <li><a href="javascrit:void();">
+                        <img src="./components/取消.svg" @click="getDetails" />
+                    </a></li>
+                <li><a href="javascrit:void();">
+                        <img src="./components/安全.svg" />
+                    </a></li>
+            </ul>
+            <ul class="btn-class">
+                <li>
+                    <a href="javascrit:void();" class="order-btn" @click="jumpto">{{ call }}</a>
+                    <a href="javascrit:void();" class="order-btn">{{ order }}</a>
+                </li>
+            </ul>
+            <ul class="locate">
+                <li><a href="javascrit:void();">
+                        <img src="./components/帮助.svg" />
+                    </a></li>
+                <li><a href="javascrit:void();" @click="selfLocation">
+                        <img src="./components/设置.svg" />
+                    </a></li>
+                <li><a href="javascrit:void();" @click="jump">
+                        <img src="./components/头像.svg" />
+                    </a></li>
+            </ul>
+        </div>
     </div>
 </template>
 
 <script>
+import getOrderItems from "./components/order-item.vue"
 export default {
     name: "Orders",
-    methods:{
-        jump(){
+    components: {
+        getOrderItems
+    },
+    props: {
+        order: {
+            type: String,
+            default: "点击约车"
+        },
+        call: {
+            type: String,
+            default: "点击叫车"
+        },
+        identity: {
+            type: String,
+            default: "true"
+        },
+        show_details: {
+            type: Boolean,
+            default: false
+        },
+        show_bar: {
+            type: Boolean,
+            default: true
+        }
+    },
+    methods: {
+        jump() {
             this.$router.replace({
-                name:"Dashboard"
+                name: "Dashboard"
             })
+        },
+        jumpto() {
+            if (this.identity === "true") {
+                this.$router.replace({
+                    name: "getOrder"
+                })
+            } else {
+                this.$router.replace({
+                    name: "driver-order"
+                })
+            }
+        },
+        selfLocation() {
+            this.$store.commit("location/SELF_LOCATION");
+        },
+        getDetails() {
+            this.show_bar = false;
+            this.show_details = true;
         }
     }
 }

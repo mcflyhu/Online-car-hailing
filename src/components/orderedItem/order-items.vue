@@ -1,44 +1,6 @@
 import VueAMap from '@vuemap/vue-amap'
 <template>
-<<<<<<< Updated upstream
-  <div class="order-item">
-    <div class="order-swiper-wrap">
-      <swiper class="swiper" :options="swiperOption">
-        <swiper-slide>
-          <order-items height="560px" />
-        </swiper-slide>
-        <swiper-slide>
-          <order-items />
-        </swiper-slide>
-        <swiper-slide>
-          <order-items />
-        </swiper-slide>
-        <swiper-slide>
-          <order-items />
-        </swiper-slide>
-        <swiper-slide>
-          <order-items />
-        </swiper-slide>
-        <swiper-slide>
-          <order-items />
-        </swiper-slide>
-        <swiper-slide>
-          <order-items />
-        </swiper-slide>
-        <swiper-slide>
-          <order-items />
-        </swiper-slide>
-        <swiper-slide>
-          <order-items />
-        </swiper-slide>
-        <swiper-slide>
-          <order-items />
-        </swiper-slide>
-      </swiper>
-      <div class="swiper-button-prev" slot="button-prev" />
-      <div class="swiper-button-next" slot="button-next" />
-=======
-    <div class="order-item">
+    <div class="order-item" v-if="vshow">
         <div class="order-swiper-wrap">
             <swiper class="swiper" :options="swiperOption">
                 <swiper-slide>
@@ -75,47 +37,32 @@ import VueAMap from '@vuemap/vue-amap'
             <div class="swiper-button-prev" slot="button-prev"></div>
             <div class="swiper-button-next" slot="button-next"></div>
         </div>
->>>>>>> Stashed changes
     </div>
-
-  </div>
 </template>
 
 <script>
-import Map_index from "../amap/index.vue"
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import OrderItems from "./orderList/index.vue"
 import 'swiper/css/swiper.css'
 export default {
-<<<<<<< Updated upstream
-  name: "getOrders",
-  components: {
-    Map_index,
-    Swiper,
-    SwiperSlide,
-    OrderItems
-  },
-  data() {
-    return {
-      swiperOption: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        }
-      }
-=======
-    name: "getOrders",
+    name: "getOrderItems",
     components: {
-        Map_index,
         Swiper,
         SwiperSlide,
         OrderItems
+    },
+    props: {
+        height: {
+            type: String,
+            default: "300px"
+        },
+        orders_info_show: false,
+        // 定时器
+        timer: null,
+        vshow:{
+            type:Boolean,
+            default:false
+        }
     },
     data() {
         return {
@@ -134,15 +81,9 @@ export default {
         }
     },
     methods:{
->>>>>>> Stashed changes
     }
-  }
 }
 </script>
 <style lang="scss">
 @import "./index.scss"
-<<<<<<< Updated upstream
-</style>
-=======
 </style> 
->>>>>>> Stashed changes

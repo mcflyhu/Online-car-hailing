@@ -71,7 +71,31 @@ export const constantRoutes = [
     hidden: true
   },
   {
+<<<<<<< Updated upstream
     path: '/',
+=======
+    path: "/",
+    name: "Index",
+    component: Home,
+  },
+  {
+    path: "/getOrder",
+    name: "getOrder",
+    component: () => import("../views/getOrders/index")
+  },
+  {
+    path: '/driver',
+    component: () => import('@/views/driver/index'),
+  },
+  {
+    path: '/driver-order',
+    name: "driver-order",
+    component: () => import('@/views/driver/driver-Orders'),
+    hidden: true
+  },
+  {
+    path: "/dashboard",
+>>>>>>> Stashed changes
     component: Layout,
     redirect: '/dashboard',
     children: [

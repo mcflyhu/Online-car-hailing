@@ -20,7 +20,7 @@ import VueAMap from '@vuemap/vue-amap'
 
 <script>
 import { AMapManager, lazyAMapApiLoaderInstance } from "vue-amap"
-import {getLonLan} from "./common"
+import { getLonLan } from "./common"
 import { SelfLocation } from "./location"
 let amapManager = new AMapManager();
 export default {
@@ -83,6 +83,13 @@ export default {
             json.center = [this.self_lng, this.self_lat];
             this.circle.push(json)
         },
+    },
+    watch: {
+        "$store.state.location.selfLocation": {
+            handler() {
+                this.selfLocation();
+            }
+        }
     }
     // methods: {
     //   getLocation() {

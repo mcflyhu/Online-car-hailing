@@ -3,7 +3,7 @@ import VueAMap from '@vuemap/vue-amap'
 
   <div class="index">
     <!--下单-->
-    <Orders />
+    <Orders identity="true"/>
     <!--地图-->
     <Map_index />
     <!--用户-->

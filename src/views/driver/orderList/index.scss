@@ -1,4 +1,4 @@
-@import "../../styles/main.scss";
+@import "../../../styles/main.scss";
 
 .sec-order {
     position: relative;
@@ -29,22 +29,24 @@
     .header {
         display: flex;
 
-        h4,
-        p {
-            flex: 1;
-        }
+        // h4,
+        // p {
+        //     flex: 1;
+        // }
     }
 }
 
+
+
 .order-logo {
+    position: relative;
     img {
-        position: relative;
+        position: absolute;
         left: 82px;
         top: 10px;
     }
 
     .name {
-        position: relative;
         text-align: center;
         font-size: 32px;
         letter-spacing: 10px;

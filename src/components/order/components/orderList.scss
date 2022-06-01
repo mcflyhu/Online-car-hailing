@@ -1,0 +1,169 @@
+@import "../../../styles/main.scss";
+
+.sec-order {
+    position: relative;
+    margin: 30px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    background-color: white;
+    border-radius: 24px;
+    -webkit-box-shadow: 0 0 18px 0 rgba(0, 0, 0, 2);
+    -moz-box-shadow: 0 0 18px 0 rgba(0, 0, 0, 2);
+    -ms-box-shadow: 0 0 18px 0 rgba(0, 0, 0, 2);
+    -o-box-shadow: 0 0 18px 0 rgba(0, 0, 0, 2);
+    box-shadow: 0 0 18px 0 rgba(0, 0, 0, 2);
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 455px;
+    height: 600px;
+
+
+
+
+    .header {
+        display: flex;
+
+        // h4,
+        // p {
+        //     flex: 1;
+        // }
+    }
+}
+
+
+
+.order-info {
+    position: relative;
+    width: 550px;
+
+    img {
+        position: relative;
+        left: 12px;
+        top: 20px;
+    }
+
+    .order-name {
+        position: relative;
+        width: 200px;
+        left: 100px;
+        text-align: center;
+        font-size: 32px;
+        letter-spacing: 10px;
+    }
+
+    .org-name {
+        position: relative;
+        text-align: center;
+        right: 100px;
+        top: -5px;
+        line-height: 16px;
+        font-size: 16px;
+        opacity: .8;
+    }
+}
+
+.driver-name {
+    img {
+        position: relative;
+        left: 12px;
+        top: 20px;
+    }
+
+    .driver {
+        position: relative;
+        text-align: center;
+        left: 62px;
+        top: -5px;
+        line-height: 16px;
+        font-size: 16px;
+        opacity: .8;
+    }
+}
+
+
+
+.car-type {
+    img {
+        position: relative;
+        left: -120px;
+        top: 62px;
+    }
+
+    .car {
+        position: relative;
+        text-align: center;
+        left: -72px;
+        top: 40px;
+        line-height: 16px;
+        font-size: 16px;
+        opacity: .8;
+    }
+}
+
+.car-num {
+    img {
+        position: relative;
+        left: 82px;
+    }
+
+    .num {
+        position: relative;
+        text-align: center;
+        top: -25px;
+        line-height: 16px;
+        font-size: 16px;
+        opacity: .8;
+    }
+}
+
+.begin-time {
+    img {
+        position: relative;
+        left: 82px;
+    }
+
+    .time-name {
+        position: relative;
+        left: 150px;
+        text-align: center;
+        top: -25px;
+        line-height: 16px;
+        font-size: 16px;
+        opacity: .8;
+        margin-left: 5px;
+        display: inline-block;
+
+        strong {
+            margin: 0 3px;
+            font-size: 22px;
+            color: red;
+        }
+
+        sub {
+            position: relative;
+            top: -2px;
+        }
+    }
+}
+
+.take_money {
+    img {
+        position: relative;
+        left: 82px;
+    }
+
+    .money-name {
+        position: relative;
+        left: 122px;
+        top: -25px;
+        line-height: 16px;
+        font-size: 16px;
+        opacity: .8;
+    }
+}

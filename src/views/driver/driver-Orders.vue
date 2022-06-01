@@ -10,7 +10,7 @@ import VueAMap from '@vuemap/vue-amap'
 import Map_index from "../amap/index.vue"
 import getOrders from "./order-items.vue"
 export default {
-    name: "orderItems",
+    name: "driver-order",
     components: { Map_index, getOrders },
     data() {
         return {}

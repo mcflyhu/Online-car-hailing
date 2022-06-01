@@ -1,0 +1,85 @@
+@import "../../styles/main.scss";
+
+.amap-page-container {
+    height: 100vh;
+}
+
+.order-item {
+    position: fixed;
+    left: 0;
+    bottom: 94px;
+    right: 0;
+    z-index: 11;
+}
+
+.order-swiper-wrap {
+    position: relative;
+    .swiper-container{
+        overflow: initial;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+        position: absolute;
+        top: 50%;
+        margin-top: -50px;
+        width: 60px;
+        height: 100px;
+        border-radius: 100px;
+        background-color: #fff;
+        -webkit-box-shadow: 0 0 18px 0 rgba(0, 0, 0, .2);
+        -moz-box-shadow: 0 0 18px 0 rgba(0, 0, 0, .2);
+        -ms-box-shadow: 0 0 18px 0 rgba(0, 0, 0, .2);
+        -o-box-shadow: 0 0 18px 0 rgba(0, 0, 0, .2);
+        box-shadow: 0 0 18px 0 rgba(0, 0, 0, .2);
+
+        &.swiper-button-disabled {
+            opacity: .5;
+        }
+    }
+
+    .swiper-button-next {
+        &::after {
+            content: "";
+            width: 14px;
+            height: 14px;
+            border-right: 3px solid #000;
+            border-top: 3px solid #000;
+            margin-right: 5px;
+            transform: -webkit-rotate(45deg);
+            transform: -moz-rotate(45deg);
+            transform: -ms-rotate(45deg);
+            transform: -o-rotate(45deg);
+            transform: rotate(45deg);
+        }
+        &:hover{
+            background-color: $color-background;
+            &::after {
+                border-right: 3px solid $color-blue;
+                border-top: 3px solid $color-blue
+            }
+        }
+    }
+
+    .swiper-button-prev {
+        &::after {
+            content: "";
+            width: 14px;
+            height: 14px;
+            border-left: 3px solid #000;
+            border-top: 3px solid #000;
+            margin-left: 5px;
+            transform: -webkit-rotate(-45deg);
+            transform: -moz-rotate(-45deg);
+            transform: -ms-rotate(-45deg);
+            transform: -o-rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+        &:hover{
+            background-color: $color-background;
+            &::after {
+                border-left: 3px solid $color-blue;
+                border-top: 3px solid $color-blue
+            }
+        }
+    }
+}
