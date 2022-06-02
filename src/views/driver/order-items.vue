@@ -1,6 +1,5 @@
 import VueAMap from '@vuemap/vue-amap'
 <template>
-<<<<<<< Updated upstream
   <div class="order-item">
     <div class="order-swiper-wrap">
       <swiper class="swiper" :options="swiperOption">
@@ -35,62 +34,20 @@ import VueAMap from '@vuemap/vue-amap'
           <order-items />
         </swiper-slide>
       </swiper>
-      <div class="swiper-button-prev" slot="button-prev" />
-      <div class="swiper-button-next" slot="button-next" />
-=======
-    <div class="order-item">
-        <div class="order-swiper-wrap">
-            <swiper class="swiper" :options="swiperOption">
-                <swiper-slide>
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items  />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-            </swiper>
-            <div class="swiper-button-prev" slot="button-prev"></div>
-            <div class="swiper-button-next" slot="button-next"></div>
-        </div>
->>>>>>> Stashed changes
+      <div slot="button-prev" class="swiper-button-prev" />
+      <div slot="button-next" class="swiper-button-next" />
     </div>
 
   </div>
 </template>
 
 <script>
-import Map_index from "../amap/index.vue"
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import OrderItems from "./orderList/index.vue"
+import OrderItems from './orderList/index.vue'
 import 'swiper/css/swiper.css'
 export default {
-<<<<<<< Updated upstream
-  name: "getOrders",
+  name: 'GetOrders',
   components: {
-    Map_index,
     Swiper,
     SwiperSlide,
     OrderItems
@@ -109,40 +66,11 @@ export default {
           prevEl: '.swiper-button-prev'
         }
       }
-=======
-    name: "getOrders",
-    components: {
-        Map_index,
-        Swiper,
-        SwiperSlide,
-        OrderItems
-    },
-    data() {
-        return {
-            swiperOption: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev'
-                }
-            },
-        }
-    },
-    methods:{
->>>>>>> Stashed changes
     }
   }
 }
 </script>
 <style lang="scss">
 @import "./index.scss"
-<<<<<<< Updated upstream
 </style>
-=======
-</style> 
->>>>>>> Stashed changes
+

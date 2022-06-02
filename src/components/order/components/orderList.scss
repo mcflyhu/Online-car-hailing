@@ -21,18 +21,34 @@
     -o-box-sizing: border-box;
     box-sizing: border-box;
     width: 455px;
-    height: 600px;
+    height: 450px;
+    .column {
+        position: relative;
+        padding: 26px 0 20px;
+        margin-bottom: 19px;
+        font-size: 20px;
+        color: #34393f;
+        border-bottom: 1px solid #e1e1e1;
 
+        .name {
+            position: absolute;
+            top: 5px;
+            left: 40px;
+        }
 
-
-
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
     .header {
         display: flex;
 
-        // h4,
-        // p {
-        //     flex: 1;
-        // }
+        h4,
+        p {
+            flex: 1;
+        }
     }
 }
 
@@ -71,7 +87,7 @@
 .driver-name {
     img {
         position: relative;
-        left: 12px;
+        left: 18px;
         top: 20px;
     }
 
@@ -91,14 +107,14 @@
 .car-type {
     img {
         position: relative;
-        left: -120px;
+        left: -132px;
         top: 62px;
     }
 
     .car {
         position: relative;
         text-align: center;
-        left: -72px;
+        left: -85px;
         top: 40px;
         line-height: 16px;
         font-size: 16px;
@@ -109,13 +125,15 @@
 .car-num {
     img {
         position: relative;
-        left: 82px;
+        left: -262px;
+        top: 102px;
     }
 
     .num {
         position: relative;
         text-align: center;
-        top: -25px;
+        left: -215px;
+        top: 80px;
         line-height: 16px;
         font-size: 16px;
         opacity: .8;
@@ -125,45 +143,51 @@
 .begin-time {
     img {
         position: relative;
-        left: 82px;
+        left: -375px;
+        top: 142px;
     }
-
     .time-name {
         position: relative;
-        left: 150px;
         text-align: center;
-        top: -25px;
+        left: -328px;
+        top: 120px;
         line-height: 16px;
         font-size: 16px;
         opacity: .8;
-        margin-left: 5px;
-        display: inline-block;
-
-        strong {
-            margin: 0 3px;
-            font-size: 22px;
-            color: red;
-        }
-
-        sub {
-            position: relative;
-            top: -2px;
-        }
     }
 }
 
 .take_money {
     img {
         position: relative;
-        left: 82px;
+        left: 18px;
+        top: 132px;
     }
 
     .money-name {
         position: relative;
-        left: 122px;
-        top: -25px;
+        left: 63px;
+        top: 110px;
         line-height: 16px;
         font-size: 16px;
         opacity: .8;
     }
+}
+.cancel_orders {
+    position: absolute;
+    bottom: -27px;
+    left: 50%;
+    width: 240px;
+    margin-left: -120px;
+    display: block;
+    widows: 240px;
+    height: 64px;
+    border-radius: 30px;
+    margin-block: 0 2px;
+    line-height: 64px;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(48, 97, 162);
+    font-size: 26px;
+    font-weight: 300;
 }

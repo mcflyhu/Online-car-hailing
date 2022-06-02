@@ -43,7 +43,7 @@
     img {
         position: absolute;
         left: 82px;
-        top: 10px;
+        top: 50px;
     }
 
     .name {
@@ -55,7 +55,7 @@
     .order-style {
         position: relative;
         text-align: center;
-        top: -15px;
+        top: 20px;
         line-height: 16px;
         font-size: 16px;
         opacity: .8;
@@ -66,13 +66,14 @@
     img {
         position: relative;
         left: 82px;
+        top: 35px;
     }
 
     .org-name {
         position: relative;
         text-align: center;
         left: 35px;
-        top: -25px;
+        top: 10px;
         line-height: 16px;
         font-size: 16px;
         opacity: .8;
@@ -83,14 +84,15 @@
     img {
         position: relative;
         left: 82px;
+        top: 35px;
     }
 
     .des-name {
         position: relative;
         text-align: center;
-        top: -25px;
         line-height: 16px;
         font-size: 16px;
+        top: 10px;
         opacity: .8;
     }
 }
@@ -99,15 +101,16 @@
     img {
         position: relative;
         left: 82px;
+        top: 35px;
     }
 
     .dis-num {
         position: relative;
         text-align: center;
-        top: -25px;
         line-height: 16px;
         font-size: 16px;
         opacity: .8;
+        top: 10px;
     }
 }
 
@@ -115,13 +118,14 @@
     img {
         position: relative;
         left: 82px;
+        top: 35px;
     }
 
     .pro-num {
         position: relative;
         left: 150px;
+        top: 10px;
         text-align: center;
-        top: -25px;
         line-height: 16px;
         font-size: 16px;
         opacity: .8;
@@ -145,22 +149,23 @@
     img {
         position: relative;
         left: 82px;
+        top: 35px;
     }
 
     .remd {
         position: relative;
         left: 122px;
-        top: -25px;
         line-height: 16px;
         font-size: 16px;
         opacity: .8;
+        top: 10px;
     }
 
     .remd-score {
         li {
             position: relative;
             left: 202px;
-            top: -45px;
+            top: -10px;
             display: inline-block;
             width: 7px;
             height: 24px;
@@ -191,6 +196,7 @@
     color: $color-main;
     opacity: .8;
     line-height: 35px;
+    top: 25px;
 
     &::after {
         content: "";
@@ -209,7 +215,9 @@
         transform: rotate(45deg);
     }
 }
-
+.el-checkbox__inner{
+    left: 400px;
+}
 .orders-detail {
     position: absolute;
     left: 0;
@@ -297,31 +305,9 @@
     .clause-dec {
         @include clearfix;
 
-        i {
-            float: right;
-            width: 20px;
-            height: 20px;
-            border-radius: 100px;
-            background-color: #cccccc;
-
-            &.current {
-                background-color: $color-main;
-            }
-
-            &:before {
-                content: "";
-                display: block;
-                width: 8px;
-                height: 4px;
-                margin: 6px 0 0 5px;
-                border-left: 2px solid #fff;
-                border-bottom: 2px solid #fff;
-                transform: -webkit-rotate(-45deg);
-                transform: -moz-rotate(-45deg);
-                transform: -ms-rotate(-45deg);
-                transform: -o-rotate(-45deg);
-                transform: rotate(-45deg);
-            }
+        .pull-left{
+            float: left;
+            top: 25px;
         }
     }
 
