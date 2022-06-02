@@ -71,9 +71,6 @@ export const constantRoutes = [
     hidden: true
   },
   {
-<<<<<<< Updated upstream
-    path: '/',
-=======
     path: "/",
     name: "Index",
     component: Home,
@@ -95,7 +92,6 @@ export const constantRoutes = [
   },
   {
     path: "/dashboard",
->>>>>>> Stashed changes
     component: Layout,
     redirect: '/dashboard',
     children: [
