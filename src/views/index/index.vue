@@ -3,34 +3,24 @@ import VueAMap from '@vuemap/vue-amap'
 
   <div class="index">
     <!--下单-->
-    <Orders identity="true"/>
+    <Orders identity="true" />
     <!--地图-->
     <Map_index />
-    <!--用户-->
-    <div id="children-view" :class="{ open: show }">
-      <router-view />
-    </div>
   </div>
 </template>
 
 <script>
-import Map_index from "../amap/index.vue"
-import Drivers from "../driver/index.vue"
-import Orders from "@c/order/index.vue"
+import Map_index from '../amap/index.vue'
+import Orders from '@c/order/index.vue'
 export default {
-  name: "Index",
-  components: { Map_index, Drivers, Orders },
+  name: 'Index',
+  components: { Map_index, Orders },
   data() {
     return {
     }
   },
   computed: {
-    show() {
-      const route = this.$route;
-      // console.log(router);
-      return route.name == "Index" ? true : false;
-    }
-  },
+  }
   // <!--是更改本类的值-->
   // watch:{
   //   "$route":{

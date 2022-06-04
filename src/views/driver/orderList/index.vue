@@ -49,7 +49,7 @@
           <li class="order-logo">
             <p class="name">订 单 一</p>
             <img src="./components/小车-的士-计程车.svg">
-            <p class="order-style">叫车订单</p>
+            <p class="order-style">快车订单</p>
           </li>
           <li class="Origin">
             <img src="./components/出发地和地点.svg">

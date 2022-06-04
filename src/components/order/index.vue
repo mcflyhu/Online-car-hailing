@@ -16,7 +16,7 @@
       <ul class="btn-class">
         <li>
           <a href="javascrit:void();" class="order-btn" @click="jumpto">{{ call }}</a>
-          <a href="javascrit:void();" class="order-btn">{{ order }}</a>
+          <a href="javascrit:void();" class="order-btn" @click="jumptoA">{{ order }}</a>
         </li>
       </ul>
       <ul class="locate">
@@ -81,6 +81,18 @@ export default {
             if (this.identity === 'true') {
                 this.$router.replace({
                     name: 'getOrder'
+                })
+            } else {
+                this.$router.replace({
+                    name: 'driver-order'
+                })
+            }
+        },
+        jumptoA() {
+          console.log(1111)
+          if (this.identity === 'true') {
+                this.$router.replace({
+                    name: 'getAppointments'
                 })
             } else {
                 this.$router.replace({

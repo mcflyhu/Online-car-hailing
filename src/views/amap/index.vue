@@ -1,14 +1,13 @@
 import VueAMap from '@vuemap/vue-amap'
 <template>
-    <div class="amap-page-container">
-        <el-amap vid="amapDemo" :amap-manager="amapManager" :events="events" class="amap-demo">
-        </el-amap>
-        <!-- <div class="toolbar">
+  <div class="amap-page-container">
+    <el-amap vid="amapDemo" :amap-manager="amapManager" :events="events" class="amap-demo" />
+    <!-- <div class="toolbar">
       <button @click="addCircle()">添加标号</button>
       <button @click="changeRadius()">更改 range </button>
       <button @click="addInfoWindow()">信息窗体 </button>
     </div> -->
-    </div>
+  </div>
 </template>
 
 <!-- <style scoped>
@@ -19,48 +18,59 @@ import VueAMap from '@vuemap/vue-amap'
 </style> -->
 
 <script>
-import { AMapManager, lazyAMapApiLoaderInstance } from "vue-amap"
-import { getLonLan } from "./common"
-import { SelfLocation } from "./location"
-let amapManager = new AMapManager();
+import { AMapManager, lazyAMapApiLoaderInstance } from 'vue-amap'
+import { getLonLan } from './common'
+import { SelfLocation, getMyLocation } from './location'
+import { getMyDrivingRoute } from './driving'
+import { getMyWalkingRoute } from './walking'
+const amapManager = new AMapManager()
 export default {
-    name: "Map_index",
+    name: 'MapIndex',
     data() {
-        const _this = this;
+        const _this = this
         return {
             map: null,
             amapManager,
             center: [114.246754, 22.721943],
             zoom: 18,
-            self_lng: "",
-            self_lat: "",
+            self_lng: '',
+            self_lat: '',
+            beginPoint: ['', ''],
+            endPoint: ['', ''],
             events: {
                 init(o) {
                     lazyAMapApiLoaderInstance.load().then(() => {
-                        _this.initMap();
-                    });
+                        _this.initMap()
+                    })
                 }
             },
             // 自身定位
-            circle: [],
+            circle: []
+        }
+    },
+    watch: {
+        '$store.state.location.selfLocation': {
+            handler() {
+                this.selfLocation()
+            }
         }
     },
     methods: {
-        /*初始化地图 */
+        /* 初始化地图 */
         initMap() {
-            this.map = amapManager.getMap();
+            this.map = amapManager.getMap()
             // 地图初始化完成回调
-            this.$emit("callbackComponent", {
-                function: "loadMap"
+            this.$emit('callbackComponent', {
+                function: 'loadMap'
             })
             // 自身定位
-            this.selfLocation();
-            //getLonLan();
+            this.selfLocation()
+            // getLonLan();
         },
         /** 存储数据 */
         saveData(params) {
             if (this[params.key]) {
-                this[params.key] = params.value;
+                this[params.key] = params.value
             }
         },
         selfLocation() {
@@ -71,76 +81,69 @@ export default {
         },
         /** 自身定位 成功回调 */
         selfLocationComplete(data) {
-            //console.log(333)
-            this.self_lng = data.position.lng;
-            this.self_lat = data.position.lat;
+            // console.log(333)
+            this.self_lng = data.position.lng
+            this.self_lat = data.position.lat
             const json = {
                 radius: 4,
-                color: "#393e43",
-                strokeOpacity: "0.2",
-                strokeWeight: "30"
+                color: '#393e43',
+                strokeOpacity: '0.2',
+                strokeWeight: '30'
             }
-            json.center = [this.self_lng, this.self_lat];
+            json.center = [this.self_lng, this.self_lat]
             this.circle.push(json)
         },
-    },
-    watch: {
-        "$store.state.location.selfLocation": {
-            handler() {
-                this.selfLocation();
-            }
+        // 获取指定地址的经纬度
+        getMyLocation() {
+            getMyLocation({
+                address: '季柳园东南门',
+                map: this.map,
+                complete: (val) => this.getMyLocationComplete(val)
+            })
+        },
+        // 获取经纬度的回调函数
+        getMyLocationComplete(data) {
+            // console.log(data)
+            self.beginPoint = [data.geocodes[0].location.lng, data.geocodes[0].location.lat]
+            this.getPoing()
+            // console.log(self.beginPoint)
+        },
+        getPoing() {
+            var that = this
+            this.map.on('click', function(e) {
+                this.endPoint = [getLonLan(e).lng, getLonLan(e).lat]
+                console.log(this.endPoint)
+                that.getMyDrivingRoute()
+            })
+        },
+        // 获取驾车路径
+        getMyDrivingRoute() {
+            console.log(111)
+            getMyDrivingRoute({
+                map: this.map,
+                beginPoint: [103.985979, 30.769602],
+                endPoint: [103.98436, 30.763859]
+                // beginPoint:this.beginPoint,
+                // endPoint:this.endPoint
+            })
+        },
+        // 获取步行路径
+        getMyWalkingRoute() {
+            console.log(111)
+            getMyWalkingRoute({
+                map: this.map,
+                beginPoint: [103.985979, 30.769602],
+                endPoint: [103.98436, 30.763859]
+                // beginPoint:this.beginPoint,
+                // endPoint:this.endPoint
+            })
         }
     }
-    // methods: {
-    //   getLocation() {
-    //     let _that = this
-    //     let geolocation = location.initMap('map-container') // 定位
-    //     AMap.event.addListener(geolocation, 'complete', result => {
-    //       console.log(result)
-    //       _that.lat = result.position.lat
-    //       _that.lng = result.position.lng
-    //       _that.location = result.formattedAddress
-    //       console.log(location)
-    //     })
-    //   },
-    //   addCircle() {
-    //     let map = amapManager.getMap();
-    //     let circle = new AMap.CircleMarker({
-    //       center: [121.329402, 31.228667],
-    //       radius: this.radius,
-    //       strokeColor: '#38f',
-    //       strokeOpacity: '0.8',
-    //       strokeWeight: 1,
-    //       fillColor: '#38f',
-    //       fillOpacity: '0.2'
-    //       //map:map //写法一
-    //     })
-    //     circle.setMap(map); //写法二
-    //     this.currentCircle = circle;
-    //   },
-    //   changeRadius() {
-    //     this.radius += 10;
-    //     this.currentCircle.setRadius(this.radius);
-    //   },
-    //   addInfoWindow() {
-    //     let map = amapManager.getMap();
-    //     AMapUI.loadUI(['overlay/SimpleInfoWindow'], function (SimpleInfoWindow) {
-    //       var infoWindow = new SimpleInfoWindow({
-    //         infoTitle: '<strong>最佳上车位置</strong>',
-    //         infoBody: '<p>西南交通大学犀浦校区西南一门</p>'
-    //       });
-    //       infoWindow.open(map, map.getCenter());
-    //     })
-    //   }
-    // }
-};
+}
 </script>
 <style lang="scss">
 .amap-page-container {
     height: 100vh;
 }
 </style>
-
-
-
 

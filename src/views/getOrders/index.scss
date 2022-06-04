@@ -1,0 +1,148 @@
+@import "../../styles/main.scss";
+
+#Order-List {
+    ul {
+        display: inline-block;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    position: absolute;
+    top: 480px;
+    border-radius: 50px;
+    bottom: 0;
+    right: 515px;
+    z-index: auto;
+    text-align: center;
+    width: 500px;
+    background-color: #313c49;
+}
+
+.order-type {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 101;
+    width: 410px;
+    background-color: #313c49;
+    -webkit-transition: all .3s ease 0s;
+    -moz-transition: all .3s ease 0s;
+    -ms-transition: all .3s ease 0s;
+    -o-transition: all .3s ease 0s;
+    transition: all .3s ease 0s;
+
+    .column {
+
+        .name {
+            position: absolute;
+            display: block;
+            font-size: 32px;
+            line-height: 59px;
+            color: white;
+            top: 5px;
+            left: 60px;
+            width: 410px;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-bottom: 1px solid #e1e1e1;
+        }
+    }
+
+    .el-radio__inner {
+        position: relative;
+        left: 220px;
+        top: -2px;
+    }
+
+    .get_type {
+        position: absolute;
+        top: 80px;
+        left: 40px;
+        display: block;
+
+        .car_icon {
+            position: absolute;
+            display: inline-block;
+            left: -32px;
+            top: 10px;
+
+            .car_type {
+                padding-bottom: 18px;
+            }
+        }
+
+        .el-radio__label {
+            color: white;
+            font-size: 20px;
+            line-height: 50px;
+            opacity: .5;
+        }
+
+        .el-form-item__label {
+            position: relative;
+            left: -32px;
+            display: inline-block;
+            color: white;
+            font-size: 20px;
+            line-height: 50px;
+            opacity: .5;
+        }
+
+    }
+
+    .get_num {
+        .el-form-item__label {
+            position: relative;
+            top: 400px;
+            color: white;
+            font-size: 20px;
+            line-height: 50px;
+            opacity: .5;
+            left: 10px;
+        }
+
+        .el-input {
+            position: relative;
+            top: 408px;
+            left: 10px;
+            width: 280px;
+        }
+    }
+
+    .el-button {
+        position: relative;
+        top: 608px;
+        left: 30px;
+    }
+
+    .doc {
+        position: relative;
+        top: 408px;
+        .el-checkbox__input{
+            position: relative;
+            left: 260px;
+        }
+        .el-checkbox__label{
+            position: relative;
+            line-height: 0px;
+            color: white;
+            opacity: .5;
+        }
+    .line{
+        position: relative;
+        left: -100px;
+        top: 20px;
+        width: 408px;
+        border-top: 1px solid #e1e1e1;
+        opacity: .8;
+    }
+    }
+}

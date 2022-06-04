@@ -82,6 +82,11 @@ export const constantRoutes = [
     component: () => import('../views/getOrders/index')
   },
   {
+    path: '/getAppointment',
+    name: 'getAppointments',
+    component: () => import('../views/getOrders/getAppointment')
+  },
+  {
     path: '/driver',
     component: () => import('@/views/driver/index')
   },

@@ -1,0 +1,230 @@
+@import "../../styles/main.scss";
+
+.order-type {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 101;
+    width: 420px;
+    background-color: #313c49;
+    -webkit-transition: all .3s ease 0s;
+    -moz-transition: all .3s ease 0s;
+    -ms-transition: all .3s ease 0s;
+    -o-transition: all .3s ease 0s;
+    transition: all .3s ease 0s;
+
+    .column {
+
+        .name {
+            position: absolute;
+            display: block;
+            font-size: 32px;
+            line-height: 59px;
+            color: white;
+            top: 5px;
+            left: 50px;
+            width: 410px;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-bottom: 1px solid #e1e1e1;
+        }
+    }
+
+    .get_start {
+        position: absolute;
+        top: 100px;
+        left: 30px;
+        display: block;
+
+        .show_icon {
+            position: absolute;
+            display: inline-block;
+            left: -125px;
+            top: 5px;
+
+            .show_type1 {
+                position: relative;
+                top: -5px;
+                padding-bottom: 28px;
+            }
+
+            .show_type2 {
+                position: relative;
+                top: 8px;
+                padding-bottom: 28px;
+            }
+
+            .show_type3 {
+                position: relative;
+                top: 8px;
+                padding-bottom: 28px;
+            }
+
+            .show_type4 {
+                position: relative;
+                top: 3px;
+                padding-bottom: 28px;
+            }
+
+            .show_type5 {
+                padding-bottom: 28px;
+            }
+        }
+
+        .line {
+            position: relative;
+            color: white;
+            opacity: .5;
+            left: 25px;
+        }
+
+        .el-form-item__label {
+            position: relative;
+            left: 10px;
+            display: inline-block;
+            color: white;
+            opacity: .5;
+            font-size: 14px;
+        }
+    }
+
+    .get_end {
+        position: relative;
+        top: 170px;
+        left: 30px;
+        display: block;
+
+        .el-form-item__label {
+            position: relative;
+            left: 10px;
+            display: inline-block;
+            color: white;
+            opacity: .5;
+            font-size: 14px;
+        }
+
+        .line {
+            position: relative;
+            color: white;
+            opacity: .5;
+            left: 5px;
+        }
+    }
+
+    .get_carType {
+        position: relative;
+        top: 170px;
+        display: block;
+
+        .el-input {
+            position: relative;
+            left: 28px;
+            width: 285px;
+        }
+
+        .el-form-item__label {
+            position: relative;
+            left: 35px;
+            color: white;
+            opacity: .5;
+        }
+    }
+
+    .origins {
+        position: relative;
+        top: 170px;
+        left: -40px;
+        display: block;
+
+        .el-form-item__label {
+            position: relative;
+            color: white;
+            opacity: .5;
+            font-size: 14px;
+            left: 77px;
+        }
+
+        .el-input__inner {
+            position: relative;
+            left: 68px;
+            width: 285px;
+        }
+    }
+
+    .paid {
+        position: relative;
+        top: 170px;
+        left: -30px;
+        display: block;
+
+        .el-form-item__label {
+            position: relative;
+            color: white;
+            opacity: .5;
+            font-size: 14px;
+            left: 67px;
+        }
+
+        .el-input__inner {
+            position: relative;
+            left: 60px;
+            width: 285px;
+        }
+    }
+
+    .doc1 {
+        position: relative;
+        top: 308px;
+
+        .el-form-item__error {
+            position: relative;
+            top: 50px;
+        }
+
+        .el-checkbox__input {
+            position: relative;
+            left: 240px;
+        }
+
+        .el-checkbox__label {
+            position: relative;
+            line-height: 0px;
+            color: white;
+            opacity: .5;
+            left: -20px;
+        }
+
+        .line1 {
+            position: relative;
+            left: -100px;
+            top: 20px;
+            width: 408px;
+            border-top: 1px solid #e1e1e1;
+            opacity: .8;
+        }
+    }
+
+    .finish {
+
+        .el-button {
+            position: relative;
+            top: 358px;
+            left: 30px;
+        }
+    }
+
+    .get_pay {
+        .el-button {
+            position: relative;
+            top: 158px;
+            left: 30px;
+        }
+    }
+
+}
