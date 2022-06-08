@@ -1,22 +1,19 @@
 import VueAMap from '@vuemap/vue-amap'
 <template>
   <div class="A-Map">
-    <get-orders />
+    <GetAppointments />
     <Map_index />
   </div>
 </template>
 
 <script>
 import Map_index from '../amap/index.vue'
-import getOrders from './order-items.vue'
+import GetAppointments from './getAppointments.vue'
 export default {
     name: 'DriverOrder',
-    components: { Map_index, getOrders },
+    components: { Map_index, GetAppointments },
     data() {
         return {}
-    },
-    methods: {
-
     }
 }
 </script>

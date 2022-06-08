@@ -66,96 +66,131 @@ import VueAMap from '@vuemap/vue-amap'
 <script>
 import Map_index from '../amap/index.vue'
 export default {
-    name: 'GetOrders',
-    components: { Map_index },
-    data() {
-        return {
-            ruleForm: {
-                origin: '',
-                destination: '',
-                resource: '',
-                region: ''
-            },
-            orOrigin: '',
-            main_show: true,
-            v_show: false,
-            rules: {
-                origin: [
-                    { required: false, message: '请输入出发地', trigger: 'blur' }
-                ],
-                destination: [
-                    { required: true, message: '请输入目的地', trigger: 'blur' }
-                ]
-            }
-        }
-    },
-    computed: {
-        psdPlaceholder() {
-            // this.orOrigin = '西南交通大学犀浦校区西南二门'
-            return '西南交通大学犀浦校区西南二门'
-        }
-    },
-    methods: {
-        getForm(formName) {
-            console.log(111)
-            console.log(this.ruleForm.origin)
-            if (this.ruleForm.destination === '') {
-                this.$message('请输入目的地')
-                this.resetForm(formName)
-            } else if (this.ruleForm.origin === '') {
-                this.ruleForm.origin = this.orOrigin
-                this.v_show = true
-                this.main_show = false
-                console.log(this.v_show)
-            } else {
-                this.v_show = true
-                this.main_show = false
-            }
-        },
-        comback() {
-            this.v_show = false
-            this.main_show = true
-        },
-        callbackComponent(params) {
-            params.function && this[params.function](params.data)
-        },
-        submitForm(formName) {
-            this.$refs[formName].validate((valid) => {
-                if (valid) {
-                    this.$alert('正在等待接单...', '等候接单', {
-                        confirmButtonText: '取消订单',
-                        callback: action => {
-                            this.$confirm('此操作将取消订单, 是否继续?', '提示', {
-                                confirmButtonText: '确定',
-                                cancelButtonText: '取消',
-                                type: 'warning'
-                            }).then(() => {
-                                this.$message({
-                                    type: 'success',
-                                    message: '取消订单成功!'
-                                })
-                                this.resetForm(formName)
-                            }).catch(() => {
-                                this.$message({
-                                    type: 'info',
-                                    message: '继续等候'
-                                })
-                                this.submitForm(formName)
-                            })
-                        }
-                    })
-                }
-            })
-        },
-        resetForm(formName) {
-            this.$refs[formName].resetFields()
-        },
-        pushback() {
-            this.$router.replace({
-                name: 'Index'
-            })
-        }
+  name: 'GetOrders',
+  components: { Map_index },
+  data() {
+    return {
+      ruleForm: {
+        origin: '',
+        destination: '',
+        resource: '',
+        region: ''
+      },
+      orOrigin: '',
+      main_show: true,
+      v_show: false,
+      acceptCode: false,
+      rules: {
+        origin: [
+          { required: false, message: '请输入出发地', trigger: 'blur' }
+        ],
+        destination: [
+          { required: true, message: '请输入目的地', trigger: 'blur' }
+        ]
+      },
+      timer1: ''
     }
+  },
+  computed: {
+    // psdPlaceholder() {
+    //   this.orOrigin = '西南交通大学犀浦校区西南二门'
+    //   return '西南交通大学犀浦校区西南二门'
+    // }
+  },
+  watch: {
+    '$store.state.order.get_done': {
+      handler() {
+        console.log(111)
+        this.$alert.close()
+      }
+    }
+  },
+  methods: {
+    getForm(formName) {
+      if (this.ruleForm.destination === '') {
+        this.$message('请输入目的地')
+        this.resetForm(formName)
+      } else if (this.ruleForm.origin === '') {
+        this.ruleForm.origin = this.orOrigin
+        this.v_show = true
+        this.main_show = false
+      } else {
+        this.v_show = true
+        this.main_show = false
+      }
+    },
+    getAcceptCode() {
+      this.acceptCode = JSON.parse(localStorage.getItem('acceptCode'))
+      console.log(this.acceptCode)
+      if (this.acceptCode === 'accept') {
+        clearInterval(this.timer1)
+        // this.$router.replace({ name: "Index" });
+        const messageBox = document.getElementsByClassName('el-message-box__wrapper')
+        const model = document.getElementsByClassName('v-modal')
+        if (messageBox) {
+          messageBox[0].parentNode.removeChild(messageBox[0])
+          model[0].parentNode.removeChild(model[0])
+        }
+        window.localStorage.setItem('acceptCode', JSON.stringify(''))
+        this.$router.replace({ name: 'walking_pre' })
+      }
+    },
+    comback() {
+      this.v_show = false
+      this.main_show = true
+    },
+    callbackComponent(params) {
+      params.function && this[params.function](params.data)
+    },
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.timer1 = setInterval(this.getAcceptCode, 1000)
+          // console.log(JSON.parse(localStorage.getItem("orderId")))
+          if (localStorage.getItem('orderId') === null) {
+            console.log(222)
+            localStorage.orderId = 1
+          } else {
+            console.log(3333)
+            localStorage.orderId = parseInt(localStorage.orderId) + 1
+            console.log(localStorage.orderId)// 标记订单号
+          }
+          this.$alert('正在等待接单...', '等候接单', {
+            confirmButtonText: '取消订单',
+            callback: action => {
+              // console.log(JSON.parse(localStorage.getItem("acceptCode")));
+              this.$confirm('此操作将取消订单, 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+              }).then(() => {
+                localStorage.orderId = parseInt(localStorage.orderId) - 1
+                this.$message({
+                  type: 'success',
+                  message: '取消订单成功!'
+                })
+                this.resetForm(formName)
+              }).catch(() => {
+                this.$message({
+                  type: 'info',
+                  message: '继续等候'
+                })
+                this.submitForm(formName)
+              })
+            }
+          })
+        }
+      })
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields()
+    },
+    pushback() {
+      this.$router.replace({
+        name: 'Index'
+      })
+    }
+  }
 }
 </script>
 <style lang="scss">

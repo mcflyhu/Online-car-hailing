@@ -42,15 +42,16 @@ import VueAMap from '@vuemap/vue-amap'
         <img src="./components/返回.svg">
       </a>
     </div>
+
   </div>
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import OrderItems from './orderList/index.vue'
+import OrderItems from './appointmentList/index.vue'
 import 'swiper/css/swiper.css'
 export default {
-  name: 'GetOrders',
+  name: 'GetAppointments',
   components: {
     Swiper,
     SwiperSlide,

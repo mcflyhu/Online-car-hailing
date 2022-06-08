@@ -1,4 +1,5 @@
 import Vue from 'vue'
+
 import AMap from 'vue-amap'
 Vue.use(AMap)
 let walking = null
@@ -8,7 +9,7 @@ export function getMyWalkingRoute(params) {
         hideMarkers: false,
         isOutline: true,
         outlineColor: '#ffeeee',
-        autoFitView: true
+        autoFitView: false
     }
 
     // 步行导航

@@ -82,12 +82,33 @@ export const constantRoutes = [
     component: () => import('../views/getOrders/index')
   },
   {
+    path: '/walking_pre',
+    name: 'walking_pre',
+    component: () => import('../views/routes/pre_walking')
+  },
+  {
+    path: '/driving_pre',
+    name: 'driving_pre',
+    component: () => import('../views/routes/pre_driving')
+  },
+  {
+    path: '/pass_driving',
+    name: 'pass_driving',
+    component: () => import('../views/routes/pass_driving')
+  },
+  {
+    path: '/driver_driving',
+    name: 'driver_driving',
+    component: () => import('../views/routes/driver_driving')
+  },
+  {
     path: '/getAppointment',
     name: 'getAppointments',
     component: () => import('../views/getOrders/getAppointment')
   },
   {
     path: '/driver',
+    name: 'driver',
     component: () => import('@/views/driver/index')
   },
   {
@@ -95,6 +116,11 @@ export const constantRoutes = [
     name: 'driver-order',
     component: () => import('@/views/driver/driver-Orders'),
     hidden: true
+  },
+  {
+    path: '/driver-appointments',
+    name: 'driver-appointments',
+    component: () => import('@/views/driver/appointments')
   },
   {
     path: '/dashboard',

@@ -7,6 +7,7 @@
     right: 0;
     z-index: 101;
     width: 420px;
+    border-radius: 10px;
     background-color: #313c49;
     -webkit-transition: all .3s ease 0s;
     -moz-transition: all .3s ease 0s;
@@ -180,7 +181,7 @@
 
     .doc1 {
         position: relative;
-        top: 308px;
+        top: 288px;
 
         .el-form-item__error {
             position: relative;
@@ -204,7 +205,7 @@
             position: relative;
             left: -100px;
             top: 20px;
-            width: 408px;
+            width: 418px;
             border-top: 1px solid #e1e1e1;
             opacity: .8;
         }
@@ -214,7 +215,7 @@
 
         .el-button {
             position: relative;
-            top: 358px;
+            top: 318px;
             left: 30px;
         }
     }
