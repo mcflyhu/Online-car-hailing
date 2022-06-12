@@ -6,15 +6,15 @@
           <li class="order-logo">
             <p class="name">订 单 一</p>
             <img src="./components/小车-的士-计程车.svg">
-            <p class="order-style">快车订单</p>
+            <p class="order-style">{{ order.orderType }}</p>
           </li>
           <li class="Origin">
             <img src="./components/出发地和地点.svg">
-            <p class="org-name">西南交通大学犀浦校区西南二门</p>
+            <p class="org-name">{{ order.orderDes }}</p>
           </li>
           <li class="destination">
             <img src="./components/icon_目的地.svg">
-            <p class="des-name">天府软件园D区</p>
+            <p class="des-name">{{ order.orderDep }}</p>
           </li>
           <li class="recommand">
             <img src="./components/推荐.svg">
@@ -49,15 +49,15 @@
           <li class="order-logo">
             <p class="name">订 单 一</p>
             <img src="./components/小车-的士-计程车.svg">
-            <p class="order-style">快车订单</p>
+            <p class="order-style">{{ order.orderType }}</p>
           </li>
           <li class="Origin">
             <img src="./components/出发地和地点.svg">
-            <p class="org-name">西南交通大学犀浦校区西南二门</p>
+            <p class="org-name">{{ order.orderDes }}</p>
           </li>
           <li class="destination">
             <img src="./components/icon_目的地.svg">
-            <p class="des-name">天府软件园D区</p>
+            <p class="des-name">{{ order.orderDep }}</p>
           </li>
           <li class="distance">
             <img src="./components/确定点距离.svg">
@@ -105,6 +105,7 @@
 </template>
 
 <script>
+import { fetchList } from '@/api/driver'
 export default {
     name: 'OrderItems',
     props: {
@@ -118,6 +119,23 @@ export default {
           },
         // 定时器
         timer: null
+    },
+    data() {
+      return {
+        order: {
+          orderType: '快单',
+          des: '123',
+          dep: '123'
+        }
+      }
+    },
+    created() {
+      fetchList().then(res => {
+        this.order = res[0]
+        console.log(res)
+      }).catch(function(error) {
+        console.log(error)
+      })
     },
     methods: {
         closeCarsInfo() {

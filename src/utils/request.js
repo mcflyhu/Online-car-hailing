@@ -1,7 +1,12 @@
 import axios from 'axios'
+// Vue.prototype.$ajax = axios
+// Vue.config.productionTip = false
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
+// import Axios from 'axios'
+
+// Axios.defaults.baseURL='/api'
 
 // create an axios instance
 const service = axios.create({
@@ -44,9 +49,10 @@ service.interceptors.response.use(
    */
   response => {
     const res = response.data
-
+    if (response.status === 200) { return res }
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 20000) {
+      console.log(res[0].orderId)
       Message({
         message: res.message || 'Error',
         type: 'error',
