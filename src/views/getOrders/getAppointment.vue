@@ -136,10 +136,10 @@ export default {
         }
     },
     computed: {
-        psdPlaceholder() {
-            // this.orOrigin = '西南交通大学犀浦校区西南二门'
-            return this.orOrigin
-        }
+        // psdPlaceholder() {
+        //     this.orOrigin = '西南交通大学犀浦校区西南二门'
+        //     return this.orOrigin
+        // }
     },
     methods: {
         comback() {
@@ -176,6 +176,7 @@ export default {
                     if (this.ruleForm.origin === '') {
                          this.ruleForm.origin = this.orOrigin
                     }
+
                     this.$alert('正在等待接单...', '等候接单', {
                         confirmButtonText: '取消订单',
                         callback: action => {

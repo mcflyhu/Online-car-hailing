@@ -1,9 +1,10 @@
 const state = {
-    showInfo: true
+    get_done: true
 }
 const mutations = {
-    SHOW_INFO(state) {
-        state.showInfo = !state.showInfo // true 与 false 之间的切换
+    GET_DONE(state) {
+        console.log(111)
+        state.get_done = !state.get_done // true 与 false 之间的切换
     }
 }
 const actions = {}

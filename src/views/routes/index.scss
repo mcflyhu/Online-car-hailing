@@ -1,0 +1,279 @@
+@import "../../styles/main.scss";
+
+#Driver-Info {
+
+    position: absolute;
+    top: 480px;
+    border-radius: 50px;
+    bottom: 0;
+    right: 515px;
+    z-index: 13;
+    text-align: center;
+    width: 500px;
+    background-color: #313c49;
+
+    .driver_img {
+        position: relative;
+        left: 50px;
+        top: 50px;
+        width: 100px;
+        height: 156px;
+    }
+
+    .detail_info {
+        position: absolute;
+        height: 0px;
+        .driver_name {
+            position: relative;
+            top: -130px;
+            left: 65px;
+            text-align: center;
+            line-height: 16px;
+            font-size: 22px;
+            opacity: .8;
+            margin-left: 5px;
+            display: inline-block;
+            color: aqua;
+
+            strong {
+                margin: 0 3px;
+                font-size: 22px;
+                color: red;
+            }
+
+            sub {
+                position: relative;
+                top: -2px;
+            }
+        }
+        .driver_score{
+            position: relative;
+            top: -100px;
+            left: -90px;
+            text-align: center;
+            line-height: 16px;
+            font-size: 22px;
+            opacity: .8;
+            margin-left: 5px;
+            display: inline-block;
+            color: aqua;
+            sub{
+                position: relative;
+                top: 15px;
+                left: -28px;
+            }
+            .star{
+                position: relative;
+                left: 85px;
+                top: -3px;
+            }
+        }
+        .car-name {
+            position: relative;
+            top: -95px;
+            left: 125px;
+            text-align: center;
+            line-height: 16px;
+            font-size: 22px;
+            opacity: .8;
+            margin-left: 5px;
+            display: inline-block;
+            color: aqua;
+
+            strong {
+                margin: 0 3px;
+                font-size: 22px;
+                color: red;
+            }
+
+            sub {
+                position: relative;
+                top: -2px;
+            }
+        }
+        .car-num {
+            position: relative;
+            top: -65px;
+            left: -90px;
+            text-align: center;
+            line-height: 16px;
+            font-size: 22px;
+            opacity: .8;
+            margin-left: 5px;
+            display: inline-block;
+            color: aqua;
+
+            strong {
+                margin: 0 3px;
+                font-size: 22px;
+                color: red;
+            }
+
+            sub {
+                position: relative;
+                top: -2px;
+            }
+        }
+        .driver-number{
+            position: relative;
+            top: -55px;
+            left: 156px;
+            text-align: center;
+            line-height: 16px;
+            font-size: 22px;
+            opacity: .8;
+            margin-left: 5px;
+            display: inline-block;
+            color: aqua;
+
+            strong {
+                margin: 0 3px;
+                font-size: 22px;
+                color: red;
+            }
+
+            sub {
+                position: relative;
+                top: -2px;
+            }
+        }
+        .begin-dis{
+            position: relative;
+            top: -30px;
+            left: -88px;
+            text-align: center;
+            line-height: 16px;
+            font-size: 22px;
+            opacity: .8;
+            margin-left: 5px;
+            display: inline-block;
+            color: aqua;
+
+            strong {
+                margin: 0 3px;
+                font-size: 22px;
+                color: red;
+            }
+
+            sub {
+                position: relative;
+                top: -2px;
+            }
+        }
+        .driver-dis{
+            position: relative;
+            top: -20px;
+            left:10px;
+            text-align: center;
+            line-height: 16px;
+            font-size: 22px;
+            opacity: .8;
+            margin-left: 5px;
+            display: inline-block;
+            color: aqua;
+
+            strong {
+                margin: 0 3px;
+                font-size: 22px;
+                color: red;
+            }
+
+            sub {
+                position: relative;
+                top: -2px;
+            }
+        }
+        .get_btn {
+            position: relative;
+            left: -150px;
+            top: -30px;
+        }
+        .get_location{
+            position: relative;
+            top: -100px;
+            left: -80px;
+            width: 32px;
+        }
+        .driver-number1{
+            position: relative;
+            top: -55px;
+            left: 140px;
+            text-align: center;
+            line-height: 16px;
+            font-size: 22px;
+            opacity: .8;
+            margin-left: 5px;
+            display: inline-block;
+            color: aqua;
+
+            strong {
+                margin: 0 3px;
+                font-size: 22px;
+                color: red;
+            }
+
+            sub {
+                position: relative;
+                top: -2px;
+            }
+        }
+        .begin-dis1{
+            position: relative;
+            top: -30px;
+            left: -105px;
+            text-align: center;
+            line-height: 16px;
+            font-size: 22px;
+            opacity: .8;
+            margin-left: 5px;
+            display: inline-block;
+            color: aqua;
+
+            strong {
+                margin: 0 3px;
+                font-size: 22px;
+                color: red;
+            }
+
+            sub {
+                position: relative;
+                top: -2px;
+            }
+        }
+        .drive-time{
+            position: relative;
+            top: -25px;
+            left: -12px;
+            text-align: center;
+            line-height: 16px;
+            font-size: 22px;
+            opacity: .8;
+            margin-left: 5px;
+            display: inline-block;
+            color: aqua;
+
+            strong {
+                margin: 0 3px;
+                font-size: 22px;
+                color: red;
+            }
+
+            sub {
+                position: relative;
+                top: -2px;
+            }
+        }
+        .warning_icon{
+            position: relative;
+            top: -150px;
+            left: 300px;
+            font-size: 60px;
+            z-index: 20;
+            color: yellow;
+            ::after{
+                color: red;
+            }
+        }
+    }
+    
+}

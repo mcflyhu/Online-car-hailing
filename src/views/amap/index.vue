@@ -46,12 +46,30 @@ export default {
             },
             // 自身定位
             circle: []
+            // timer1: ''
         }
     },
+    // mounted() {
+    //     this.timer1 = setInterval(this.selfLocation, 1000);
+    // },
+    // beforeDestroy() {
+    //     clearInterval(this.timer1);
+    // },
     watch: {
         '$store.state.location.selfLocation': {
             handler() {
                 this.selfLocation()
+                this.$store.commit('location/SET_LOCATION', location)
+            }
+        },
+        '$store.state.routes.driving': {
+            handler() {
+                this.getMyDrivingRoute()
+            }
+        },
+        '$store.state.routes.walking': {
+            handler() {
+                this.getMyWalkingRoute()
             }
         }
     },
@@ -82,6 +100,8 @@ export default {
         /** 自身定位 成功回调 */
         selfLocationComplete(data) {
             // console.log(333)
+            var location = { 'address': data.formattedAddress, 'location': [data.position.lng, data.position.lat] }
+            this.$store.commit('location/SET_LOCATION', location)
             this.self_lng = data.position.lng
             this.self_lat = data.position.lat
             const json = {
@@ -93,6 +113,7 @@ export default {
             json.center = [this.self_lng, this.self_lat]
             this.circle.push(json)
         },
+
         // 获取指定地址的经纬度
         getMyLocation() {
             getMyLocation({
@@ -112,38 +133,42 @@ export default {
             var that = this
             this.map.on('click', function(e) {
                 this.endPoint = [getLonLan(e).lng, getLonLan(e).lat]
-                console.log(this.endPoint)
+                // console.log(this.endPoint)
                 that.getMyDrivingRoute()
             })
         },
         // 获取驾车路径
         getMyDrivingRoute() {
-            console.log(111)
+            // console.log(111)
+            console.log(this.$store.state.order.get_done)
             getMyDrivingRoute({
                 map: this.map,
-                beginPoint: [103.985979, 30.769602],
+                beginPoint: this.$store.state.location.myLocation.location,
                 endPoint: [103.98436, 30.763859]
                 // beginPoint:this.beginPoint,
                 // endPoint:this.endPoint
             })
+            this.map.setZoom(16)
         },
         // 获取步行路径
         getMyWalkingRoute() {
-            console.log(111)
+            // console.log(111)
             getMyWalkingRoute({
                 map: this.map,
-                beginPoint: [103.985979, 30.769602],
+                beginPoint: this.$store.state.location.myLocation.location,
                 endPoint: [103.98436, 30.763859]
                 // beginPoint:this.beginPoint,
                 // endPoint:this.endPoint
             })
+            // this.map.setCenter([this.getCenter().lng+0.1,this.getCenter().lat+0.1])
+            this.map.setZoom(16)
         }
     }
 }
 </script>
 <style lang="scss">
 .amap-page-container {
-    height: 100vh;
+    height: 100%;
 }
 </style>
 

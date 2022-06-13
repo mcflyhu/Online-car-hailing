@@ -3,7 +3,8 @@ export function getMyDrivingRoute(params) {
     var drivingOption = {
         policy: AMap.DrivingPolicy.LEAST_TIME, // 其它policy参数请参考 https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingPolicy
         ferry: 1, // 是否可以使用轮渡
-        map: params.map
+        map: params.map,
+        autoFitView: false
     }
 
     // 构造路线导航类

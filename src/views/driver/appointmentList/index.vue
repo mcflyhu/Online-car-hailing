@@ -5,16 +5,16 @@
         <ul class="info">
           <li class="order-logo">
             <p class="name">订 单 一</p>
-            <img src="./components/小车-的士-计程车.svg">
-            <p class="order-style">{{ order.orderType }}</p>
+            <img src="./components/出发地.svg">
+            <p class="org-name">西南交通大学犀浦校区西南二门</p>
           </li>
-          <li class="Origin">
-            <img src="./components/出发地和地点.svg">
-            <p class="org-name">{{ order.orderDes }}</p>
+          <li class="begin">
+            <img src="./components/员工渠道APP-开始时间.svg">
+            <p class="begin-time">2022年6月8日12:00</p>
           </li>
-          <li class="destination">
-            <img src="./components/icon_目的地.svg">
-            <p class="des-name">{{ order.orderDep }}</p>
+          <li class="end">
+            <img src="./components/员工渠道APP-结束时间.svg">
+            <p class="end-time">2022年6月9日12:00</p>
           </li>
           <li class="recommand">
             <img src="./components/推荐.svg">
@@ -48,24 +48,24 @@
         <ul class="info">
           <li class="order-logo">
             <p class="name">订 单 一</p>
-            <img src="./components/小车-的士-计程车.svg">
-            <p class="order-style">{{ order.orderType }}</p>
+            <img src="./components/出发地.svg">
+            <p class="org-name">西南交通大学犀浦校区西南二门</p>
           </li>
-          <li class="Origin">
-            <img src="./components/出发地和地点.svg">
-            <p class="org-name">{{ order.orderDes }}</p>
+          <li class="begin">
+            <img src="./components/员工渠道APP-开始时间.svg">
+            <p class="begin-time">2022年6月8日12:00</p>
           </li>
-          <li class="destination">
-            <img src="./components/icon_目的地.svg">
-            <p class="des-name">{{ order.orderDep }}</p>
+          <li class="end">
+            <img src="./components/员工渠道APP-结束时间.svg">
+            <p class="end-time">2022年6月9日12:00</p>
           </li>
           <li class="distance">
             <img src="./components/确定点距离.svg">
             <p class="dis-num">出发地距您2km</p>
           </li>
-          <li class="distance">
-            <img src="./components/距离路径.svg">
-            <p class="dis-num">总行程25.7km</p>
+          <li class="car-type">
+            <img src="./components/车型-未选.svg">
+            <p class="type-name">所需车型:SUV</p>
           </li>
           <li class="profit">
             <img src="./components/盈利.svg">
@@ -96,7 +96,7 @@
       <div class="clause-dec">
         <el-checkbox label="参保《全面保障服务》行车更放心" name="type" class="pull-left" />
       </div>
-      <a href="javascript: void(0);" class="order-btn" @click="submitSuccess">接收订单</a>
+      <a href="javascript: void(0);" class="order-btn" @click="submitSuccess">接收预约</a>
     </section>
 
     <!-- <section class="sec-order order-details" >
@@ -105,7 +105,6 @@
 </template>
 
 <script>
-import { fetchList } from '@/api/driver'
 export default {
     name: 'OrderItems',
     props: {
@@ -119,23 +118,6 @@ export default {
           },
         // 定时器
         timer: null
-    },
-    data() {
-      return {
-        order: {
-          orderType: '快单',
-          des: '123',
-          dep: '123'
-        }
-      }
-    },
-    created() {
-      fetchList().then(res => {
-        this.order = res[0]
-        console.log(res)
-      }).catch(function(error) {
-        console.log(error)
-      })
     },
     methods: {
         closeCarsInfo() {
@@ -159,14 +141,13 @@ export default {
             }, 10)
         },
         submitSuccess() {
-            this.$message('接单成功！即将跳转页面...')
-            if (this.timer) { clearTimeout(this.timer) } // 防止连续点击，开启多个定时器
+            this.$message('接单成功！即将返回主页...')
+             if (this.timer) { clearTimeout(this.timer) } // 防止连续点击，开启多个定时器
             this.timer = setTimeout(() => {
                 clearTimeout(this.timer)
             }, 10)
-            window.localStorage.setItem('acceptCode', JSON.stringify('accept'))
             this.$router.replace({
-              name: 'driving_pre'
+                path: '/driver'
             })
         }
     }

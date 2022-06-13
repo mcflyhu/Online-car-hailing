@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import getters from './getters'
 import location from './modules/location'
-import order_info from './modules/order_info'
+import routes from './modules/routes'
+import order from './modules/order'
 
 Vue.use(Vuex)
 
@@ -23,7 +24,8 @@ const store = new Vuex.Store({
   modules,
   getters,
   location,
-  order_info
+  routes,
+  order
 })
 
 export default store

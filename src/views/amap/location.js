@@ -11,7 +11,9 @@ export function SelfLocation(params) { // { map: "", current: ""}
     }
     params.map.addControl(geolocation)
     geolocation.getCurrentPosition(function(status, result) {
-        if (status === 'complete') { console.log(result) }
+        if (status === 'complete') {
+            console.log(111)
+     }
     })
     if (params.complete && typeof params.complete === 'function') {
         AMap.event.addListener(geolocation, 'complete', params.complete) // 定位成功

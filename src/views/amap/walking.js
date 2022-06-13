@@ -5,7 +5,7 @@ export function getMyWalkingRoute(params) {
         hideMarkers: false,
         isOutline: true,
         outlineColor: '#ffeeee',
-        autoFitView: true
+        autoFitView: false
     }
 
     // 步行导航

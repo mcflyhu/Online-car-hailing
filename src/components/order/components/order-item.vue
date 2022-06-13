@@ -1,51 +1,51 @@
 import VueAMap from '@vuemap/vue-amap'
 <template>
-    <div class="order-item" v-if="vshow">
-        <div class="order-swiper-wrap">
-            <swiper class="swiper" :options="swiperOption">
-                <swiper-slide>
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items  />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-                <swiper-slide >
-                    <order-items />
-                </swiper-slide>
-            </swiper>
-            <div class="swiper-button-prev" slot="button-prev"></div>
-            <div class="swiper-button-next" slot="button-next"></div>
-        </div>
+  <div class="order-item">
+    <div class="order-swiper-wrap">
+      <swiper class="swiper" :options="swiperOption">
+        <swiper-slide>
+          <order-items />
+        </swiper-slide>
+        <swiper-slide>
+          <order-items />
+        </swiper-slide>
+        <swiper-slide>
+          <order-items />
+        </swiper-slide>
+        <swiper-slide>
+          <order-items />
+        </swiper-slide>
+        <swiper-slide>
+          <order-items />
+        </swiper-slide>
+        <swiper-slide>
+          <order-items />
+        </swiper-slide>
+        <swiper-slide>
+          <order-items />
+        </swiper-slide>
+        <swiper-slide>
+          <order-items />
+        </swiper-slide>
+        <swiper-slide>
+          <order-items />
+        </swiper-slide>
+        <swiper-slide>
+          <order-items />
+        </swiper-slide>
+      </swiper>
+      <div slot="button-prev" class="swiper-button-prev" />
+      <div slot="button-next" class="swiper-button-next" />
     </div>
+  </div>
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import OrderItems from "./orderList.vue"
+import OrderItems from './orderList.vue'
 import 'swiper/css/swiper.css'
 export default {
-    name: "getOrderItems",
+    name: 'GetOrderItems',
     components: {
         Swiper,
         SwiperSlide,
@@ -54,15 +54,14 @@ export default {
     props: {
         height: {
             type: String,
-            default: "300px"
+            default: '300px'
         },
-        orders_info_show: false,
+        orders_info_show: {
+            type: Boolean,
+            default: false
+        },
         // 定时器
-        timer: null,
-        vshow:{
-            type:Boolean,
-            default:false
-        }
+        timer: null
     },
     data() {
         return {
@@ -77,13 +76,24 @@ export default {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev'
                 }
-            },
+            }
         }
     },
-    methods:{
+    methods: {
+        comeback() {
+            if (this.identity === 'true') {
+                this.$router.replace({
+                    path: '/'
+                })
+            } else {
+                this.$router.replace({
+                    path: '/driver'
+                })
+            }
+        }
     }
 }
 </script>
 <style lang="scss">
 @import "./index.scss"
-</style> 
+</style>
