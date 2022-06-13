@@ -1,4 +1,3 @@
-import VueAMap from '@vuemap/vue-amap'
 <template>
 
   <div class="index">
@@ -12,6 +11,8 @@ import VueAMap from '@vuemap/vue-amap'
 <script>
 import Map_index from '../amap/index.vue'
 import Orders from '@c/order/index.vue'
+import VueAMap from '@vuemap/vue-amap'
+
 export default {
   name: 'Index',
   components: { Map_index, Orders },

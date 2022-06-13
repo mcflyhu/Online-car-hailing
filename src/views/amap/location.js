@@ -1,6 +1,3 @@
-import Vue from 'vue'
-import AMap from 'vue-amap'
-Vue.use(AMap)
 let geolocation = null
 export function SelfLocation(params) { // { map: "", current: ""}
     if (!geolocation) {

@@ -57,6 +57,11 @@ export const constantRoutes = [
     hidden: true
   },
   {
+    path: '/sign-up',
+    component: () => import('@/views/sign-up/index'),
+    hidden: true
+  },
+  {
     path: '/auth-redirect',
     component: () => import('@/views/login/auth-redirect'),
     hidden: true
@@ -457,19 +462,6 @@ export const asyncRoutes = [
       }
     ]
   },
-
-  {
-    path: '/sign-up',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/sign-up'),
-        meta: { tile: '登录界面' }
-      }
-    ]
-  },
-
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

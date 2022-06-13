@@ -1,96 +1,96 @@
 <template>
   <div class="login-container">
-    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
-
-      <div class="title-container">
-        <h3 class="title">Login Form</h3>
-      </div>
-
-      <el-form-item prop="username">
-        <span class="svg-container">
-          <svg-icon icon-class="user" />
-        </span>
-        <el-input
-          ref="username"
-          v-model="loginForm.username"
-          placeholder="Username"
-          name="username"
-          type="text"
-          tabindex="1"
-          autocomplete="on"
-        />
-      </el-form-item>
-
-      <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
-        <el-form-item prop="password">
-          <span class="svg-container">
-            <svg-icon icon-class="password" />
-          </span>
-          <el-input
-            :key="passwordType"
-            ref="password"
-            v-model="loginForm.password"
-            :type="passwordType"
-            placeholder="Password"
-            name="password"
-            tabindex="2"
+    <el-row :gutter="20">
+      <el-col :span="10" push="7">
+        <el-card class="login-card" shadow="always">
+          <el-form
+            ref="loginForm"
+            :model="loginForm"
+            :rules="loginRules"
+            class="login-form"
             autocomplete="on"
-            @keyup.native="checkCapslock"
-            @blur="capsTooltip = false"
-            @keyup.enter.native="handleLogin"
-          />
-          <span class="show-pwd" @click="showPwd">
-            <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
-          </span>
-        </el-form-item>
-      </el-tooltip>
+            label-position="left"
+          >
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
+            <div class="title-container">
+              <h3 class="title">登录</h3>
+            </div>
 
-      <div style="position:relative">
-        <div class="tips">
-          <span>Username : admin</span>
-          <span>Password : any</span>
-        </div>
-        <div class="tips">
-          <span style="margin-right:18px;">Username : editor</span>
-          <span>Password : any</span>
-        </div>
+            <el-form-item prop="username">
+              <span class="svg-container">
+                <svg-icon icon-class="user" />
+              </span>
+              <el-input
+                ref="username"
+                v-model="loginForm.username"
+                placeholder="请输入电话号码或用户名"
+                name="username"
+                type="text"
+                tabindex="1"
+                autocomplete="on"
+              />
+            </el-form-item>
 
-        <el-button class="thirdparty-button" type="primary" @click="showDialog=true">
-          Or connect with
-        </el-button>
-      </div>
-    </el-form>
+            <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
+              <el-form-item prop="password">
+                <span class="svg-container">
+                  <svg-icon icon-class="password" />
+                </span>
+                <el-input
+                  :key="passwordType"
+                  ref="password"
+                  v-model="loginForm.password"
+                  :type="passwordType"
+                  placeholder="请输入密码"
+                  name="password"
+                  tabindex="2"
+                  autocomplete="on"
+                  @keyup.native="checkCapslock"
+                  @blur="capsTooltip = false"
+                  @keyup.enter.native="handleLogin"
+                />
+                <span class="show-pwd" @click="showPwd">
+                  <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+                </span>
+              </el-form-item>
+            </el-tooltip>
 
-    <el-dialog title="Or connect with" :visible.sync="showDialog">
-      Can not be simulated on local, so please combine you own business simulation! ! !
-      <br>
-      <br>
-      <br>
-      <social-sign />
-    </el-dialog>
+            <el-button
+              :loading="loading"
+              type="primary"
+              style="width:100%;
+              margin-bottom:30px;"
+              @click.native.prevent="handleLogin"
+            >
+              登录
+            </el-button>
+
+            <div class="register-group">
+              <router-link to="/sign-up" replace="true">注册账号</router-link>
+            </div>
+          </el-form>
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
 import { validUsername } from '@/utils/validate'
-import SocialSign from './components/SocialSignin'
 
 export default {
   name: 'Login',
-  components: { SocialSign },
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
-        callback(new Error('Please enter the correct user name'))
+        callback(new Error('请输入正确的用户名'))
       } else {
         callback()
       }
     }
     const validatePassword = (rule, value, callback) => {
       if (value.length < 6) {
-        callback(new Error('The password can not be less than 6 digits'))
+        callback(new Error('输入密码错误'))
       } else {
         callback()
       }
@@ -98,7 +98,7 @@ export default {
     return {
       loginForm: {
         username: 'admin',
-        password: '111111'
+        password: ''
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -107,7 +107,6 @@ export default {
       passwordType: 'password',
       capsTooltip: false,
       loading: false,
-      showDialog: false,
       redirect: undefined,
       otherQuery: {}
     }
@@ -204,9 +203,9 @@ export default {
 /* 修复input 背景不协调 和光标变色 */
 /* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */
 
-$bg:#283443;
-$light_gray:#fff;
-$cursor: #fff;
+$bg: #283443;
+$light_gray: rgb(116, 115, 115);
+$cursor: rgb(0, 0, 0);
 
 @supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
   .login-container .el-input input {
@@ -233,14 +232,14 @@ $cursor: #fff;
 
       &:-webkit-autofill {
         box-shadow: 0 0 0px 1000px $bg inset !important;
-        -webkit-text-fill-color: $cursor !important;
+        -webkit-text-fill-color: $cursor  !important;
       }
     }
   }
 
   .el-form-item {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgb(0, 0, 0);
+    background: rgba(233, 133, 133, 0);
     border-radius: 5px;
     color: #454545;
   }
@@ -248,28 +247,30 @@ $cursor: #fff;
 </style>
 
 <style lang="scss" scoped>
-$bg:#2d3a4b;
-$dark_gray:#889aa4;
-$light_gray:#eee;
+$dark_gray: #889aa4;
+$light_gray: rgb(195, 228, 88);
 
 .login-container {
   min-height: 100%;
   width: 100%;
-  background-color: $bg;
-  overflow: hidden;
+  background: url("C:/Users/McFly/Documents/GitHub/Online-car-hailing-/src/assets/images/background.jpg");
+  overflow: visible;
 
-  .login-form {
-    position: relative;
-    width: 520px;
-    max-width: 100%;
-    padding: 160px 35px 0;
-    margin: 0 auto;
-    overflow: hidden;
+  .login-card{
+    height: 60%;
+    max-height: 100%;
+    margin-top: 80px;
+   // background-color: rgb(255, 255, 255);
+    .login-form {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+      }
   }
 
   .tips {
     font-size: 14px;
-    color: #fff;
+    color: rgb(223, 242, 58);
     margin-bottom: 10px;
 
     span {
@@ -307,6 +308,19 @@ $light_gray:#eee;
     color: $dark_gray;
     cursor: pointer;
     user-select: none;
+  }
+
+  .register-group {
+    .register-button {
+      width: 50%;
+      text-align: center;
+    }
+
+    .register {
+      text-align: center;
+      font-size: 20px;
+      color: aqua;
+    }
   }
 
   .thirdparty-button {

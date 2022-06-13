@@ -1,6 +1,3 @@
-import Vue from 'vue'
-import AMap from 'vue-amap'
-Vue.use(AMap)
 let driving = null
 export function getMyDrivingRoute(params) {
     var drivingOption = {
