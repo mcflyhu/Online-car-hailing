@@ -19,7 +19,15 @@
 
     <div class="footer-button">
       <el-button round @click="back">上一步</el-button>
-      <el-button round @click="next">下一步</el-button>
+
+      <span v-if="active === 2">
+        <el-button round @click="gotoLogin">返回</el-button>
+
+      </span>
+      <span v-else>
+        <el-button round @click="next">下一步</el-button>
+
+      </span>
     </div>
   </div>
 </template>
@@ -43,6 +51,9 @@ export default {
     },
     back() {
       this.active--
+    },
+    gotoLogin() {
+      this.$router.push('/login')
     }
   }
 }

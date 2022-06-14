@@ -1,9 +1,9 @@
 <template>
-  <div class="app-container">
-    <div class="back-button">
-      <el-button circle @click="back">
-        <i class="el-icon-back" />
-      </el-button>
+<div class="order-description">
+  <el-dialog title="订单详情" :visible.sync="orderdialogvisible">
+    <el-button circle @click="back">
+      <i class="el-icon-back" />
+    </el-button>
     </div>
     <el-descriptions class="order-table" column="2" title="订单详情" border>
       <el-descriptions-item class="table-item">
@@ -78,6 +78,7 @@
         {{ passengerTel }}
       </el-descriptions-item>
     </el-descriptions>
+  </el-dialog>
   </div>
 </template>
 

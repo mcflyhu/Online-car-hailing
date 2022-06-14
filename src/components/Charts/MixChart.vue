@@ -54,7 +54,7 @@ export default {
       this.chart.setOption({
         backgroundColor: '#344b58',
         title: {
-          text: 'statistics',
+          text: '使用数据',
           x: '20',
           top: '20',
           textStyle: {
@@ -90,7 +90,7 @@ export default {
           textStyle: {
             color: '#90979c'
           },
-          data: ['female', 'male', 'average']
+          data: ['出行花费', '出行里程', '信用积分']
         },
         calculable: true,
         xAxis: [{
@@ -162,7 +162,7 @@ export default {
           end: 35
         }],
         series: [{
-          name: 'female',
+          name: '出行花费',
           type: 'bar',
           stack: 'total',
           barMaxWidth: 35,
@@ -183,23 +183,23 @@ export default {
             }
           },
           data: [
-            709,
-            1917,
-            2455,
-            2610,
-            1719,
-            1433,
-            1544,
-            3285,
-            5208,
-            3372,
-            2484,
-            4078
+            201,
+            59,
+            103,
+            402,
+            512,
+            31,
+            834,
+            311,
+            98,
+            332,
+            128,
+            578
           ]
         },
 
         {
-          name: 'male',
+          name: '出行里程',
           type: 'bar',
           stack: 'total',
           itemStyle: {
@@ -216,21 +216,21 @@ export default {
             }
           },
           data: [
-            327,
-            1776,
-            507,
-            1200,
-            800,
+            18,
+            188,
+            87,
+            871,
+            120,
             482,
             204,
-            1390,
-            1001,
-            951,
-            381,
-            220
+            332,
+            311,
+            130,
+            437,
+            51
           ]
         }, {
-          name: 'average',
+          name: '信用积分',
           type: 'line',
           stack: 'total',
           symbolSize: 10,
@@ -249,18 +249,18 @@ export default {
             }
           },
           data: [
-            1036,
-            3693,
-            2962,
-            3810,
-            2519,
-            1915,
-            1748,
-            4675,
-            6209,
-            4323,
-            2865,
-            4298
+            5,
+            4.1,
+            4.8,
+            5,
+            3.9,
+            4.7,
+            5,
+            5,
+            5,
+            4.9,
+            4.8,
+            4.2
           ]
         }
         ]

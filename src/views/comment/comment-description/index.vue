@@ -1,66 +1,84 @@
 <template>
   <div class="app-container">
-    <div class="backbtn">
-      <el-button circle @click="back">
-        <i class="el-icon-back" />
-      </el-button>
-    </div>
-    <el-descriptions class="comment-table" title="评论详情" column="1" border>
-      <el-descriptions-item label-class-name="comment-label" content-class-name="comment-item">
-        <template slot="label">
-          <i class="el-icon-user-solid" />
-          司机姓名
-        </template>
-      </el-descriptions-item>
+    <el-col v-for="comment in list" :key="comment.oid" span="20" offset="2">
+      <div class="backbtn">
+        <el-button circle @click="back">
+          <i class="el-icon-back" />
+        </el-button>
+      </div>
+      <el-descriptions class="comment-table" title="评论详情" column="1" border>
+        <el-descriptions-item label-class-name="comment-label" content-class-name="comment-item">
+          <template slot="label">
+            <i class="el-icon-user-solid" />
+            司机编号
+          </template>
+          {{ comment.dwid }}
+        </el-descriptions-item>
 
-      <el-descriptions-item label-class-name="comment-label" content-class-name="comment-item">
-        <template slot="label">
-          <i class="el-icon-mobile-phone" />
-          司机电话号码
-        </template>
-      </el-descriptions-item>
+        <el-descriptions-item label-class-name="comment-label" content-class-name="comment-item">
+          <template slot="label">
+            <i class="el-icon-mobile-phone" />
+            评论时间
+          </template>
+          {{ comment.datetime }}
+        </el-descriptions-item>
 
-      <el-descriptions-item label-class-name="comment-label" content-class-name="comment-item">
-        <template slot="label">
-          <i class="el-icon-star-off" />
-          行程满意度
-        </template>
-        <el-rate v-model="satisfaction" disabled text-color="#ff9900" />
-      </el-descriptions-item>
+        <el-descriptions-item label-class-name="comment-label" content-class-name="comment-item">
+          <template slot="label">
+            <i class="el-icon-star-off" />
+            行程满意度
+          </template>
+          <el-rate :value="comment.travelSatis" disabled text-color="#ff9900" />
+        </el-descriptions-item>
 
-      <el-descriptions-item label-class-name="comment-label" content-class-name="comment-item">
-        <template slot="label">
-          <i class="el-icon-star-on" />
-          车辆舒适度
-        </template>
+        <el-descriptions-item label-class-name="comment-label" content-class-name="comment-item">
+          <template slot="label">
+            <i class="el-icon-star-on" />
+            车辆舒适度
+          </template>
+          {{ comment.carComfort }}
+        </el-descriptions-item>
 
-      </el-descriptions-item>
+        <el-descriptions-item label-class-name="comment-label" content-class-name="comment-item">
+          <template slot="label">
+            <i class="el-icon-star-off" />
+            司机服务分
+          </template>
+          {{ comment.driverService }}
+        </el-descriptions-item>
+      </el-descriptions>
 
-      <el-descriptions-item label-class-name="comment-label" content-class-name="comment-item">
-        <template slot="label">
-          <i class="el-icon-star-off" />
-          司机服务分
-        </template>
-
-      </el-descriptions-item>
-    </el-descriptions>
-
-    <div class="user-comment">
-      <h4 class="comment-header">用户评论</h4>
-      <span class="comment-content">
-        我是猪？
-      </span>
-    </div>
+      <div class="user-comment">
+        <h4 class="comment-header">用户评论</h4>
+        <span class="comment-content">
+          {{ comment.commentInfo }}
+        </span>
+      </div>
+    </el-col>
   </div>
 </template>
 
 <script>
+import { fetchById } from '@/api/comment'
 export default {
   data() {
     return {
+      oid: '',
+      list: []
     }
   },
+  created() {
+    this.oid = this.$route.query.oid
+    this.getList()
+  },
   methods: {
+    async getList() {
+      this.listLoading = true
+      fetchById(this.oid).then(response => {
+        this.list = response.data
+      })
+      this.listLoading = false
+    },
     back() {
       this.$router.go(-1)
     }
@@ -106,8 +124,10 @@ export default {
     }
 
     .comment-content {
+      margin-top: 20px;
       color: rgb(68, 42, 42);
       font-family: Arial, Helvetica, sans-serif;
+      font-size: large;
     }
   }
 }

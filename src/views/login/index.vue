@@ -111,6 +111,7 @@ export default {
       otherQuery: {}
     }
   },
+  /*
   watch: {
     $route: {
       handler: function(route) {
@@ -123,6 +124,7 @@ export default {
       immediate: true
     }
   },
+*/
   created() {
     // window.addEventListener('storage', this.afterQRScan)
   },
@@ -157,7 +159,7 @@ export default {
           this.loading = true
           this.$store.dispatch('user/login', this.loginForm)
             .then(() => {
-              this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
+              this.$router.push({ path: '/', query: this.otherQuery })
               this.loading = false
             })
             .catch(() => {

@@ -7,10 +7,10 @@ Vue.use(Router)
 import Layout from '@/layout'
 
 /* Router Modules */
-import componentsRouter from './modules/components'
+// import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
-import tableRouter from './modules/table'
-import nestedRouter from './modules/nested'
+// import tableRouter from './modules/table'
+// import nestedRouter from './modules/nested'
 import Home from '../views/index/index'
 
 /**
@@ -52,13 +52,13 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/login',
-    component: () => import('@/views/login/index'),
+    path: '/sign-up',
+    component: () => import('@/views/sign-up/index'),
     hidden: true
   },
   {
-    path: '/sign-up',
-    component: () => import('@/views/sign-up/index'),
+    path: '/login',
+    component: () => import('@/views/login/index'),
     hidden: true
   },
   {
@@ -136,10 +136,11 @@ export const constantRoutes = [
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         name: 'Dashboard',
-        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+        meta: { title: '主页', icon: 'dashboard', affix: true }
       }
     ]
   },
+  /*
   {
     path: '/documentation',
     component: Layout,
@@ -165,6 +166,7 @@ export const constantRoutes = [
       }
     ]
   },
+  */
   {
     path: '/profile',
     component: Layout,
@@ -175,7 +177,7 @@ export const constantRoutes = [
         path: 'index',
         component: () => import('@/views/profile/index'),
         name: 'Profile',
-        meta: { title: 'Profile', icon: 'user', noCache: true }
+        meta: { title: '个人信息', icon: 'user', noCache: true }
       }
     ]
   }
@@ -193,7 +195,7 @@ export const asyncRoutes = [
     alwaysShow: true, // will always show the root menu
     name: 'Permission',
     meta: {
-      title: 'Permission',
+      title: '权限管理',
       icon: 'lock',
       roles: ['admin', 'editor'] // you can set roles in root nav
     },
@@ -227,7 +229,7 @@ export const asyncRoutes = [
       }
     ]
   },
-
+  /*
   {
     path: '/icon',
     component: Layout,
@@ -240,13 +242,13 @@ export const asyncRoutes = [
       }
     ]
   },
-
+*/
   /** when your routing map is too long, you can split it into small modules **/
-  componentsRouter,
+  // componentsRouter,
   chartsRouter,
-  nestedRouter,
-  tableRouter,
-
+  // nestedRouter,
+  // tableRouter,
+  /*
   {
     path: '/example',
     component: Layout,
@@ -439,7 +441,7 @@ export const asyncRoutes = [
       }
     ]
   },
-
+  */
   {
     path: '/order',
     component: Layout,
@@ -448,19 +450,7 @@ export const asyncRoutes = [
         path: 'index',
         component: () => import('@/views/order/index'),
         name: '订单',
-        meta: { title: 'Order', icon: 'list' }
-      }
-    ]
-  },
-  {
-    path: '/order-description',
-    component: Layout,
-    redirect: '/order-description/index',
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/order/order-description'),
-        name: '订单详情'
+        meta: { title: '订单', icon: 'list' }
       }
     ]
   },
@@ -472,7 +462,7 @@ export const asyncRoutes = [
         path: 'index',
         component: () => import('@/views/comment/index'),
         name: '评论',
-        meta: { title: 'Comment', icon: 'el-icon-s-comment' }
+        meta: { title: '评论', icon: 'el-icon-s-comment' }
       }
     ]
   },

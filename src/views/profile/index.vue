@@ -40,7 +40,13 @@ export default {
   components: { UserCard, Account },
   data() {
     return {
-      user: {},
+      user: {
+        name: '张三',
+        phone: '138239283921',
+        idcard: '371082199205228659',
+        rate: 4,
+        username: 'admin'
+      },
       activeTab: 'activity'
     }
   },
